@@ -4,6 +4,7 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -128,5 +129,60 @@
             </objects>
             <point key="canvasLocation" x="117" y="4"/>
         </scene>
+        <!--Item 2-->
+        <scene sceneID="e60-sQ-wca">
+            <objects>
+                <viewController id="uZh-R2-Nu0" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="xzT-CI-jEf">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="99A-8f-7vp"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Item 2" id="STn-Kc-e6v"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MYl-mj-da8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2366" y="323"/>
+        </scene>
+        <!--Item 1-->
+        <scene sceneID="TgH-s2-T0G">
+            <objects>
+                <viewController id="fBL-DB-m1h" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="JfZ-cX-nun">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="es6-oe-lAd"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Item 1" id="egf-El-nSH"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NrE-jj-xAu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2366" y="-283"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="RAb-or-4Ud">
+            <objects>
+                <tabBarController storyboardIdentifier="MainView" id="QyG-w3-xlG" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="zOA-fN-679">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="fBL-DB-m1h" kind="relationship" relationship="viewControllers" id="h4u-rw-OpT"/>
+                        <segue destination="uZh-R2-Nu0" kind="relationship" relationship="viewControllers" id="bgr-Mo-ekc"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="73X-tH-QjU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1066" y="-3"/>
+        </scene>
     </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>
