@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import ProgressHUD
 
 class LoginViewController: UIViewController {
     //MARK: - IBOutlets
@@ -23,22 +24,93 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var registerButton: UIButton!
     
     
+    var isLogin: Bool = true
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupUI(isLogin: true)
         
     }
     
+    
+    
     //MARK: - IBActions
     @IBAction func loginButtonTap(_ sender: Any) {
-        print("loginButtonTap")
+        guard isValidForm(isLogin: isLogin) else { return ProgressHUD.failed("All field are required")}
+        isLogin ? login() : register()
     }
     
     @IBAction func forgotPasswordButtonTp(_ sender: Any) {
-        print("forgotPassword")
+        forgotPassword()
     }
     
-    @IBAction func registerButtonTap(_ sender: Any) {
-        print("registerButton")
+    
+    
+    @IBAction func registerButtonTap(_ sender: UIButton) {
+        setupUI(isLogin: sender.titleLabel?.text == "Login")
+        isLogin.toggle()
+    }
+    
+    //MARK: - Helpers
+    
+    private func setupUI(isLogin: Bool){
+        repeatPasswordTextField.isHidden = isLogin
+        forgotPasswordButton.isHidden = !isLogin
+        loginButton.setTitle(isLogin ? "Login" : "Register", for: .normal)
+        registerLabel.text = isLogin ? "Don't have an account?" : "Have an account?"
+        registerButton.setTitle(isLogin ? "Register" : "Login", for: .normal)
+    }
+    
+    private func isValidForm(isLogin: Bool) -> Bool {
+        if (isLogin){
+            return usernameTextField.text != "" && passwordTextField.text != ""
+        }
+        return usernameTextField.text != "" && passwordTextField.text != "" && repeatPasswordTextField.text != ""
+    }
+    
+    private func login(){
+        FirebaseUserListener.shared.loginUser(email: usernameTextField.text!, password: passwordTextField.text!){ error, isEmailVerified in
+            if error == nil {
+                ProgressHUD.success("Login Success")
+                self.navigateToMainScreen()
+                //                if !isEmailVerified{
+                //                    ProgressHUD.failed("Verify your email first")
+                //                }else{
+                //                    ProgressHUD.success("Login Success")
+                //                }
+            }else{
+                ProgressHUD.failed("Login error, " + error!.localizedDescription)
+            }
+            
+        }
+    }
+    
+    private func register(){
+        if passwordTextField.text! == repeatPasswordTextField.text! {
+            FirebaseUserListener.shared.registerUserWith(email: usernameTextField.text!, password: passwordTextField.text!){
+                error in
+                if error == nil {
+                    ProgressHUD.success("Registration Successful")
+                }else{
+                    ProgressHUD.failed("Failed to register " + error!.localizedDescription)
+                }
+            }
+        }else{
+            ProgressHUD.failed("Password doesn't match ")
+        }
+    }
+    private func forgotPassword(){
+        FirebaseUserListener.shared.resetPassword(email: usernameTextField.text!){ error in
+            if error == nil{
+                ProgressHUD.success("Reset link sent to your email")
+            }else{
+                ProgressHUD.failed("Reset Password error: " + error!.localizedDescription)
+            }
+        }
+    }
+    
+    private func navigateToMainScreen(){
+        print("Navigate")
     }
 }
 
