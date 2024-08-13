@@ -12,6 +12,7 @@ struct User: Codable, Equatable{
     var id = ""
     var username: String
     var email: String
+//    var status: String
     var pushId = ""
     var avatar = ""
     var firstName: String?

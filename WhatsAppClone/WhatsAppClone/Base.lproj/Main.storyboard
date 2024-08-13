@@ -11,7 +11,7 @@
         <!--Login View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="LoginViewController" customModule="WhatsAppClone" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginView" id="BYZ-38-t0r" customClass="LoginViewController" customModule="WhatsAppClone" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -148,7 +148,7 @@
         <!--Settings-->
         <scene sceneID="zQS-vd-OyM">
             <objects>
-                <tableViewController id="E9g-Re-owI" sceneMemberID="viewController">
+                <tableViewController id="E9g-Re-owI" customClass="SettingsTableViewController" customModule="WhatsAppClone" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" id="ZYe-p3-iAd">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -217,19 +217,24 @@
                                                         <constraint firstAttribute="height" constant="30" id="t5n-2A-Ijj"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tell a Friend" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EVD-ku-agB">
-                                                    <rect key="frame" x="54" y="11.666666666666664" width="300.66666666666669" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BCw-Dh-ZcL">
+                                                    <rect key="frame" x="54" y="5" width="300.66666666666669" height="34.333333333333336"/>
+                                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                    <state key="normal" title="Tell a Friend"/>
+                                                    <buttonConfiguration key="configuration" style="plain" title="Tell a Friend">
+                                                        <color key="baseForegroundColor" name="label"/>
+                                                    </buttonConfiguration>
+                                                    <connections>
+                                                        <action selector="tellAFriendButtonTap:" destination="E9g-Re-owI" eventType="touchUpInside" id="2dC-be-0dn"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="BCw-Dh-ZcL" firstAttribute="leading" secondItem="liD-5X-7Jm" secondAttribute="trailing" constant="8" id="1pw-7e-e35"/>
+                                                <constraint firstItem="liD-5X-7Jm" firstAttribute="centerY" secondItem="BCw-Dh-ZcL" secondAttribute="centerY" id="HQd-TR-4UK"/>
                                                 <constraint firstItem="liD-5X-7Jm" firstAttribute="leading" secondItem="we5-5Z-Eyj" secondAttribute="leading" constant="16" id="UOZ-E5-Ikt"/>
-                                                <constraint firstItem="liD-5X-7Jm" firstAttribute="centerY" secondItem="EVD-ku-agB" secondAttribute="centerY" id="aRO-fJ-dur"/>
-                                                <constraint firstItem="EVD-ku-agB" firstAttribute="leading" secondItem="liD-5X-7Jm" secondAttribute="trailing" constant="8" id="cXQ-52-f9m"/>
-                                                <constraint firstItem="EVD-ku-agB" firstAttribute="centerY" secondItem="we5-5Z-Eyj" secondAttribute="centerY" id="gkv-OZ-ndp"/>
-                                                <constraint firstAttribute="trailing" secondItem="EVD-ku-agB" secondAttribute="trailing" constant="8" id="pda-0M-kCy"/>
+                                                <constraint firstAttribute="trailing" secondItem="BCw-Dh-ZcL" secondAttribute="trailing" constant="8" id="dq2-Jz-ogG"/>
+                                                <constraint firstItem="BCw-Dh-ZcL" firstAttribute="centerY" secondItem="we5-5Z-Eyj" secondAttribute="centerY" id="ukj-9j-EGr"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -244,6 +249,9 @@
                                                     <rect key="frame" x="157.66666666666666" y="4.6666666666666679" width="78" height="35"/>
                                                     <state key="normal" title="Button"/>
                                                     <buttonConfiguration key="configuration" style="plain" title="Logout"/>
+                                                    <connections>
+                                                        <action selector="logoutButtonTap:" destination="E9g-Re-owI" eventType="touchUpInside" id="Z0j-RP-Tm6"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <constraints>
@@ -261,6 +269,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Settings" id="6kS-Bs-FH3"/>
+                    <connections>
+                        <outlet property="avatarImageView" destination="Y9g-Sy-Lhy" id="zff-xq-IiJ"/>
+                        <outlet property="statusLabel" destination="vRr-Tb-FCP" id="5Ym-7L-ZLo"/>
+                        <outlet property="usernameLabel" destination="Sln-c4-cCE" id="7Wt-3X-uLS"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IMt-Hw-WzD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -327,6 +340,9 @@
         <image name="message" catalog="system" width="128" height="116"/>
         <image name="person.circle" catalog="system" width="128" height="123"/>
         <image name="person.circle.fill" catalog="system" width="128" height="123"/>
+        <namedColor name="label">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

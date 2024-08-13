@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		016D8BBC2C6B5F41008997E1 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 016D8BBB2C6B5F41008997E1 /* SettingsTableViewController.swift */; };
 		018BEC9F2C68D24D00057577 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 018BEC9E2C68D24D00057577 /* AppDelegate.swift */; };
 		018BECA12C68D24D00057577 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 018BECA02C68D24D00057577 /* SceneDelegate.swift */; };
 		018BECA32C68D24D00057577 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 018BECA22C68D24D00057577 /* ViewController.swift */; };
@@ -23,6 +24,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		016D8BBB2C6B5F41008997E1 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		018BEC9B2C68D24D00057577 /* WhatsAppClone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WhatsAppClone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		018BEC9E2C68D24D00057577 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		018BECA02C68D24D00057577 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -88,6 +90,7 @@
 				018BECB92C69F9DD00057577 /* Constants.swift */,
 				018BECBB2C69FCEA00057577 /* FCollectionReference.swift */,
 				018BECBD2C69FDFA00057577 /* FirebaseUserListener.swift */,
+				016D8BBB2C6B5F41008997E1 /* SettingsTableViewController.swift */,
 			);
 			path = WhatsAppClone;
 			sourceTree = "<group>";
@@ -241,6 +244,7 @@
 				018BECA12C68D24D00057577 /* SceneDelegate.swift in Sources */,
 				018BECBC2C69FCEA00057577 /* FCollectionReference.swift in Sources */,
 				018BECBA2C69F9DD00057577 /* Constants.swift in Sources */,
+				016D8BBC2C6B5F41008997E1 /* SettingsTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
