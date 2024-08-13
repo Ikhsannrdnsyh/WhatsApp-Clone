@@ -129,7 +129,7 @@
             </objects>
             <point key="canvasLocation" x="117" y="4"/>
         </scene>
-        <!--Item 2-->
+        <!--Chats-->
         <scene sceneID="e60-sQ-wca">
             <objects>
                 <viewController id="uZh-R2-Nu0" sceneMemberID="viewController">
@@ -139,13 +139,42 @@
                         <viewLayoutGuide key="safeArea" id="99A-8f-7vp"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item 2" id="STn-Kc-e6v"/>
+                    <tabBarItem key="tabBarItem" title="Chats" image="message" catalog="system" id="STn-Kc-e6v"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MYl-mj-da8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2366" y="323"/>
         </scene>
-        <!--Item 1-->
+        <!--Settings-->
+        <scene sceneID="zQS-vd-OyM">
+            <objects>
+                <tableViewController id="E9g-Re-owI" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="ZYe-p3-iAd">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="oAM-dI-iaq">
+                                <rect key="frame" x="0.0" y="50" width="393" height="43.666667938232422"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="oAM-dI-iaq" id="F2w-vC-FZh">
+                                    <rect key="frame" x="0.0" y="0.0" width="393" height="43.666667938232422"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="E9g-Re-owI" id="sEC-eo-4jR"/>
+                            <outlet property="delegate" destination="E9g-Re-owI" id="ZH2-Sr-N5f"/>
+                        </connections>
+                    </tableView>
+                    <tabBarItem key="tabBarItem" title="Settings" image="gear" catalog="system" id="YG6-Mg-1aF"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IMt-Hw-WzD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2366" y="984"/>
+        </scene>
+        <!--Contacts-->
         <scene sceneID="TgH-s2-T0G">
             <objects>
                 <viewController id="fBL-DB-m1h" sceneMemberID="viewController">
@@ -155,7 +184,7 @@
                         <viewLayoutGuide key="safeArea" id="es6-oe-lAd"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item 1" id="egf-El-nSH"/>
+                    <tabBarItem key="tabBarItem" title="Contacts" image="person.circle" catalog="system" id="egf-El-nSH"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NrE-jj-xAu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -173,6 +202,7 @@
                     <connections>
                         <segue destination="fBL-DB-m1h" kind="relationship" relationship="viewControllers" id="h4u-rw-OpT"/>
                         <segue destination="uZh-R2-Nu0" kind="relationship" relationship="viewControllers" id="bgr-Mo-ekc"/>
+                        <segue destination="E9g-Re-owI" kind="relationship" relationship="viewControllers" id="qSL-mp-6uD"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="73X-tH-QjU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -181,6 +211,9 @@
         </scene>
     </scenes>
     <resources>
+        <image name="gear" catalog="system" width="128" height="122"/>
+        <image name="message" catalog="system" width="128" height="116"/>
+        <image name="person.circle" catalog="system" width="128" height="123"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
