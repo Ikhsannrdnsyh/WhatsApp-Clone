@@ -44,8 +44,6 @@ class LoginViewController: UIViewController {
         forgotPassword()
     }
     
-    
-    
     @IBAction func registerButtonTap(_ sender: UIButton) {
         setupUI(isLogin: sender.titleLabel?.text == "Login")
         isLogin.toggle()
