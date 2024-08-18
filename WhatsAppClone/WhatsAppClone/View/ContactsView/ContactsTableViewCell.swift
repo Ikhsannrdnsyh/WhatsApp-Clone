@@ -1,0 +1,40 @@
+//
+//  ContactsTableViewCell.swift
+//  WhatsAppClone
+//
+//  Created by Mochamad Ikhsan Nurdiansyah on 18/08/24.
+//
+
+import UIKit
+
+class ContactsTableViewCell: UITableViewCell {
+    
+    //MARK: - IBOutlets
+    @IBOutlet weak var usernameLabel: UILabel!
+    @IBOutlet weak var statusLabel: UILabel!
+    @IBOutlet weak var avatarImageView: UIImageView!
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+    }
+
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
+    }
+    
+    func configure(user: User){
+        usernameLabel.text = user.username
+        statusLabel.text = ""
+        setAvatar(avatar: user.avatar)
+        
+    }
+    
+    private func setAvatar(avatar: String){
+        guard avatar != "" else { return }
+        
+        FirebaseStorageHelper.downloadImage(url: avatar) { image in
+            self.avatarImageView.image = image
+        }
+    }
+
+}
