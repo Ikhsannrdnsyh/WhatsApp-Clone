@@ -25,6 +25,7 @@ class EditTableViewController: UITableViewController {
         tableView.tableHeaderView = UIView()
         tableView.tableFooterView = UIView()
         
+        avatarImageView.layer.cornerRadius = avatarImageView.frame.width / 2
         configureUserNameTextField()
         configureImagePicker()
     }
@@ -34,21 +35,20 @@ class EditTableViewController: UITableViewController {
         fetchUserInfo()
     }
     //MARK: - IBAction
-    
     @IBAction func editButtonTap(_ sender: Any) {
         showPicker()
     }
     
     //MARK: - Update UI
-    
     private func fetchUserInfo(){
         if let user = User.currentUser {
             usernameTextField.text = user.username
             statusLabel.text = ""
             
             if user.avatar != ""{
-                //set profile picture
-                
+                FirebaseStorageHelper.downloadImage(url: user.avatar) { image in
+                    self.avatarImageView.image = image
+                }
             }
         }
     }
@@ -72,25 +72,42 @@ class EditTableViewController: UITableViewController {
         
         picker.didFinishPicking { [unowned picker] items, canceled in
             if canceled {
-                // cancel
+                print("Cancel choose image")
             }
             
             if let photo = items.singlePhoto {
                 DispatchQueue.main.async {
                     self.avatarImageView.image = photo.image
+                    //upload image to firebase
+                    self.uploadImage(photo.image)
                 }
             }
             picker.dismiss(animated: true, completion: nil)
         }
         present(picker, animated: true, completion: nil)
     }
-
+    
+    //MARK: - Upload Data
+    private func uploadImage(_ image: UIImage){
+        let directory = "Avatars/" + "_\(User.currentID)" + ".jpg"
+        
+        FirebaseStorageHelper.uploadImage(image, directory: directory) { imageLink in
+            if var user = User.currentUser{
+                user.avatar = imageLink ?? ""
+                saveUserLocally(user)
+                FirebaseUserListener.shared.saveUserToFirestore(user)
+            }
+        }
+        
+        FirebaseStorageHelper.saveFileToLocal(file: image.jpegData(compressionQuality: 1.0)! as NSData, fileName: User.currentID)
+    }
+    
     
     // MARK: - Table view delegate
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
     }
-
+    
 }
 
 extension EditTableViewController: UITextFieldDelegate{

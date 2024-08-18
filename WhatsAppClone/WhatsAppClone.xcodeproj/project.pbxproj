@@ -21,6 +21,8 @@
 		018BECBC2C69FCEA00057577 /* FCollectionReference.swift in Sources */ = {isa = PBXBuildFile; fileRef = 018BECBB2C69FCEA00057577 /* FCollectionReference.swift */; };
 		018BECBE2C69FDFA00057577 /* FirebaseUserListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 018BECBD2C69FDFA00057577 /* FirebaseUserListener.swift */; };
 		01B84D012C6B70BD00EF28CC /* EditTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01B84D002C6B70BD00EF28CC /* EditTableViewController.swift */; };
+		01B84D042C71C20100EF28CC /* FirebaseStorageHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01B84D032C71C20100EF28CC /* FirebaseStorageHelper.swift */; };
+		01B84D072C71C96600EF28CC /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01B84D062C71C96600EF28CC /* Util.swift */; };
 		5F0E8FBC6A98182EE823D688 /* Pods_WhatsAppClone.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A24E12DA6105C1AAF41E2DEF /* Pods_WhatsAppClone.framework */; };
 /* End PBXBuildFile section */
 
@@ -41,6 +43,8 @@
 		018BECBB2C69FCEA00057577 /* FCollectionReference.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FCollectionReference.swift; sourceTree = "<group>"; };
 		018BECBD2C69FDFA00057577 /* FirebaseUserListener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseUserListener.swift; sourceTree = "<group>"; };
 		01B84D002C6B70BD00EF28CC /* EditTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTableViewController.swift; sourceTree = "<group>"; };
+		01B84D032C71C20100EF28CC /* FirebaseStorageHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseStorageHelper.swift; sourceTree = "<group>"; };
+		01B84D062C71C96600EF28CC /* Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
 		8EEBC67B2FE0E0A18B5689BA /* Pods-WhatsAppClone.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WhatsAppClone.release.xcconfig"; path = "Target Support Files/Pods-WhatsAppClone/Pods-WhatsAppClone.release.xcconfig"; sourceTree = "<group>"; };
 		A24E12DA6105C1AAF41E2DEF /* Pods_WhatsAppClone.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WhatsAppClone.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA7A9E14A38641AF18C93661 /* Pods-WhatsAppClone.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WhatsAppClone.debug.xcconfig"; path = "Target Support Files/Pods-WhatsAppClone/Pods-WhatsAppClone.debug.xcconfig"; sourceTree = "<group>"; };
@@ -79,6 +83,7 @@
 		018BEC9D2C68D24D00057577 /* WhatsAppClone */ = {
 			isa = PBXGroup;
 			children = (
+				01B84D052C71C95500EF28CC /* Helper */,
 				01B84D022C71C18000EF28CC /* FirebaseHelper */,
 				01B84CFE2C6B6FD700EF28CC /* View */,
 				018BECB72C69F5E500057577 /* GoogleService-Info.plist */,
@@ -126,8 +131,17 @@
 			children = (
 				018BECBB2C69FCEA00057577 /* FCollectionReference.swift */,
 				018BECBD2C69FDFA00057577 /* FirebaseUserListener.swift */,
+				01B84D032C71C20100EF28CC /* FirebaseStorageHelper.swift */,
 			);
 			path = FirebaseHelper;
+			sourceTree = "<group>";
+		};
+		01B84D052C71C95500EF28CC /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				01B84D062C71C96600EF28CC /* Util.swift */,
+			);
+			path = Helper;
 			sourceTree = "<group>";
 		};
 		A39EFBDCABB1652CD85340EE /* Frameworks */ = {
@@ -270,6 +284,8 @@
 				018BECBE2C69FDFA00057577 /* FirebaseUserListener.swift in Sources */,
 				018BECB52C69F38500057577 /* User.swift in Sources */,
 				018BECA12C68D24D00057577 /* SceneDelegate.swift in Sources */,
+				01B84D072C71C96600EF28CC /* Util.swift in Sources */,
+				01B84D042C71C20100EF28CC /* FirebaseStorageHelper.swift in Sources */,
 				018BECBC2C69FCEA00057577 /* FCollectionReference.swift in Sources */,
 				018BECBA2C69F9DD00057577 /* Constants.swift in Sources */,
 				016D8BBC2C6B5F41008997E1 /* SettingsTableViewController.swift in Sources */,
