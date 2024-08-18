@@ -6,7 +6,7 @@
 //
 
 import UIKit
-
+import YPImagePicker
 
 
 class EditTableViewController: UITableViewController {
@@ -15,13 +15,18 @@ class EditTableViewController: UITableViewController {
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var statusLabel: UILabel!
     
+    //MARK: - Vars
+    var picker: YPImagePicker?
+    
     //MARK: - View Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         tableView.tableHeaderView = UIView()
         tableView.tableFooterView = UIView()
         
         configureUserNameTextField()
+        configureImagePicker()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -31,7 +36,7 @@ class EditTableViewController: UITableViewController {
     //MARK: - IBAction
     
     @IBAction func editButtonTap(_ sender: Any) {
-        
+        showPicker()
     }
     
     //MARK: - Update UI
@@ -51,6 +56,33 @@ class EditTableViewController: UITableViewController {
     private func configureUserNameTextField() {
         usernameTextField.delegate = self
         usernameTextField.clearButtonMode = .whileEditing
+    }
+    
+    private func configureImagePicker(){
+        var config = YPImagePickerConfiguration()
+        config.showsPhotoFilters = false
+        config.screens = [.library]
+        config.library.maxNumberOfItems = 3
+        
+        picker = YPImagePicker(configuration: config)
+    }
+    
+    private func showPicker(){
+        guard let picker = picker else { return }
+        
+        picker.didFinishPicking { [unowned picker] items, canceled in
+            if canceled {
+                // cancel
+            }
+            
+            if let photo = items.singlePhoto {
+                DispatchQueue.main.async {
+                    self.avatarImageView.image = photo.image
+                }
+            }
+            picker.dismiss(animated: true, completion: nil)
+        }
+        present(picker, animated: true, completion: nil)
     }
 
     

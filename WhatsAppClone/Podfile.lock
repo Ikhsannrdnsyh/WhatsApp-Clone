@@ -1050,7 +1050,6 @@ PODS:
     - FirebaseCoreExtension (~> 10.0)
     - GoogleUtilities/Environment (~> 7.12)
     - GTMSessionFetcher/Core (< 4.0, >= 2.1)
-  - Gallery (2.4.0)
   - GoogleAppMeasurement (10.29.0):
     - GoogleAppMeasurement/AdIdSupport (= 10.29.0)
     - GoogleUtilities/AppDelegateSwizzler (~> 7.11)
@@ -1195,6 +1194,7 @@ PODS:
   - nanopb/encode (2.30910.0)
   - ProgressHUD (14.1.1)
   - PromisesObjC (2.4.0)
+  - PryntTrimmerView (4.0.2)
   - Realm (10.52.3):
     - Realm/Headers (= 10.52.3)
   - Realm/Headers (10.52.3)
@@ -1202,6 +1202,10 @@ PODS:
     - Realm (= 10.52.3)
   - RecaptchaInterop (100.0.0)
   - SKPhotoBrowser (7.1.0)
+  - SteviaLayout (5.1.2)
+  - YPImagePicker (5.2.2):
+    - PryntTrimmerView (= 4.0.2)
+    - SteviaLayout (= 5.1.2)
 
 DEPENDENCIES:
   - Firebase/Analytics
@@ -1211,12 +1215,12 @@ DEPENDENCIES:
   - Firebase/Messaging
   - Firebase/Storage
   - FirebaseFirestoreSwift
-  - Gallery
   - InputBarAccessoryView
   - MessageKit
   - ProgressHUD
   - RealmSwift
   - SKPhotoBrowser
+  - YPImagePicker
 
 SPEC REPOS:
   trunk:
@@ -1237,7 +1241,6 @@ SPEC REPOS:
     - FirebaseMessaging
     - FirebaseSharedSwift
     - FirebaseStorage
-    - Gallery
     - GoogleAppMeasurement
     - GoogleDataTransport
     - GoogleUtilities
@@ -1250,10 +1253,13 @@ SPEC REPOS:
     - nanopb
     - ProgressHUD
     - PromisesObjC
+    - PryntTrimmerView
     - Realm
     - RealmSwift
     - RecaptchaInterop
     - SKPhotoBrowser
+    - SteviaLayout
+    - YPImagePicker
 
 SPEC CHECKSUMS:
   abseil: d121da9ef7e2ff4cab7666e76c5a3e0915ae08c3
@@ -1273,7 +1279,6 @@ SPEC CHECKSUMS:
   FirebaseMessaging: 7b5d8033e183ab59eb5b852a53201559e976d366
   FirebaseSharedSwift: 20530f495084b8d840f78a100d8c5ee613375f6e
   FirebaseStorage: 436c30aa46f2177ba152f268fe4452118b8a4856
-  Gallery: b7fc1aeb68a39ad6d2c423574750196bf9b25e5c
   GoogleAppMeasurement: f9de05ee17401e3355f68e8fc8b5064d429f5918
   GoogleDataTransport: 6c09b596d841063d76d4288cc2d2f42cc36e1e2a
   GoogleUtilities: ea963c370a38a8069cc5f7ba4ca849a60b6d7d15
@@ -1286,11 +1291,14 @@ SPEC CHECKSUMS:
   nanopb: 438bc412db1928dac798aa6fd75726007be04262
   ProgressHUD: abb9136ae23c85204236828562cb9a8ec98efb44
   PromisesObjC: f5707f49cb48b9636751c5b2e7d227e43fba9f47
+  PryntTrimmerView: 6a43cc90df5d99addeabd33d4ba09b1365322130
   Realm: f9d340f510309e52a393d65c56103ef524d88a43
   RealmSwift: 673454b09bc096853ee530e824847f38cdc21243
   RecaptchaInterop: 7d1a4a01a6b2cb1610a47ef3f85f0c411434cb21
   SKPhotoBrowser: cd95b95a6f352fc2a50992721299f75ead77f9ab
+  SteviaLayout: 05424e528d643657d39ce72c786e4adf13cfc5f2
+  YPImagePicker: afc81b3cffab05a6e7261c5daf80dc31b4e917b4
 
-PODFILE CHECKSUM: ee851880ffc6c225b0146b3d84121fd95baf05cd
+PODFILE CHECKSUM: d3930868df236c67c4eff585838253c8af7397dd
 
 COCOAPODS: 1.15.2
