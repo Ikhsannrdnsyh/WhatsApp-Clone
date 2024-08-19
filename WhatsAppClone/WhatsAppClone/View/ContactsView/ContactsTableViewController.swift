@@ -20,6 +20,8 @@ class ContactsTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 //        createDummyUsers()
+        
+        fetchUsersData()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -47,5 +49,14 @@ class ContactsTableViewController: UITableViewController {
         
         //TODO: Show user details
     }
-
+    
+    //MARK: - Fetch Data
+    private func fetchUsersData(){
+        FirebaseUserListener.shared.downloadAllUsersFromFirestore { users in
+            self.allUsers = users
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        }
+    }
 }
