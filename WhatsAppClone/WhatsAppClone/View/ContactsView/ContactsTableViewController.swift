@@ -19,6 +19,8 @@ class ContactsTableViewController: UITableViewController {
     //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        //Setup UI
+        setupSearchbar()
 //        createDummyUsers()
         
         fetchUsersData()
@@ -50,6 +52,17 @@ class ContactsTableViewController: UITableViewController {
         //TODO: Show user details
     }
     
+    //MARK: - setup UI
+    func setupSearchbar(){
+        navigationItem.searchController = searchController
+        navigationItem.hidesSearchBarWhenScrolling = true
+        
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.placeholder = "Search Contact"
+        searchController.searchResultsUpdater = self
+        definesPresentationContext = true
+    }
+    
     //MARK: - Fetch Data
     private func fetchUsersData(){
         FirebaseUserListener.shared.downloadAllUsersFromFirestore { users in
@@ -58,5 +71,18 @@ class ContactsTableViewController: UITableViewController {
                 self.tableView.reloadData()
             }
         }
+    }
+    
+    private func filterUser(text: String){
+        filterUsers = allUsers.filter({ (user) -> Bool in
+            return user.username.lowercased().contains(text.lowercased())
+        })
+        tableView.reloadData()
+    }
+}
+
+extension ContactsTableViewController: UISearchResultsUpdating{
+    func updateSearchResults(for searchController: UISearchController) {
+        filterUser(text: searchController.searchBar.text!)
     }
 }
