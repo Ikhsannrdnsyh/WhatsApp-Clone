@@ -19,7 +19,7 @@ class ContactsTableViewController: UITableViewController {
     //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        createDummyUsers()
+//        createDummyUsers()
     }
     
     override func viewDidAppear(_ animated: Bool) {
