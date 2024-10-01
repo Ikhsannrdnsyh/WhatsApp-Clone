@@ -7,7 +7,7 @@
 
 import UIKit
 
-class RecentChatTableViewController: UITableViewController, UISearchResultsUpdating {
+class RecentChatTableViewController: UITableViewController {
     
     
     
@@ -26,7 +26,7 @@ class RecentChatTableViewController: UITableViewController, UISearchResultsUpdat
         self.tableView.tableFooterView = UIView()
         
         setupRefreshControl()
-        setupSearchbar()
+        setupSearchController()
         fecthRecentChat()
         
         
@@ -47,7 +47,7 @@ class RecentChatTableViewController: UITableViewController, UISearchResultsUpdat
         }
     }
     
-    private func setupSearchbar(){
+    private func setupSearchController(){
         navigationItem.searchController = searchController
         navigationItem.hidesSearchBarWhenScrolling = true
         
@@ -71,13 +71,14 @@ class RecentChatTableViewController: UITableViewController, UISearchResultsUpdat
         return searchController.isActive ? filteredRecentChats.count : allRecentChats.count
     }
     
+    
     //MARK: - Table view delegate
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         let recentChat = searchController.isActive ? filteredRecentChats[indexPath.row] : allRecentChats[indexPath.row]
         
-        //update counter page
+        //update counter badge
         FirebaseRecentChatListener.shared.clearUnreadCounter(recentChat: recentChat)
         
         //navigate to chat room
@@ -110,10 +111,16 @@ class RecentChatTableViewController: UITableViewController, UISearchResultsUpdat
         }
     }
     
-    func updateSearchResults(for searchController: UISearchController) {
-        
+    private func filterContent(text: String){
+        filteredRecentChats = allRecentChats.filter({ recentChat in
+            return recentChat.receiverName.lowercased().contains(text.lowercased())
+        })
+        tableView.reloadData()
     }
+}
 
-    
-
+extension RecentChatTableViewController: UISearchResultsUpdating{
+    func updateSearchResults(for searchController: UISearchController) {
+        filterContent(text: searchController.searchBar.text!)
+    }
 }
