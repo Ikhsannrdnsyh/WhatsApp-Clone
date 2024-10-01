@@ -51,8 +51,15 @@ class RecentChatTableViewCell: UITableViewCell {
         }
         
         setAvatar(avatar: recent.avatar)
-        dateLabel.text = formatDate(date: recent.date!)
+        if let date = recent.date {
+            dateLabel.isHidden = false
+            dateLabel.text = timeElapse(date: date)
+        }else{
+            dateLabel.isHidden = true
+        }
+        
         dateLabel.adjustsFontSizeToFitWidth = true
+        
         
     }
     
@@ -61,9 +68,5 @@ class RecentChatTableViewCell: UITableViewCell {
         FirebaseStorageHelper.downloadImage(url: avatar) { image in
             self.avatarImageView.image = image
         }
-    }
-    
-    private func formatDate(date: Date) -> String {
-        return ""
     }
 }
