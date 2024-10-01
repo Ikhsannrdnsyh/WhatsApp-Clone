@@ -22,7 +22,7 @@ class RecentChatTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        avatarImageView.layer.cornerRadius = unreadCounterView.frame.width / 2
+        avatarImageView.layer.cornerRadius = avatarImageView.frame.width / 2
         unreadCounterView.layer.cornerRadius = unreadCounterView.frame.width / 2
     }
     
