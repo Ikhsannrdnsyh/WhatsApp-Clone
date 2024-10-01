@@ -625,17 +625,16 @@ void QueryBuilder::add_bool_constraint(RLMPropertyType datatype,
 template<typename T>
 void QueryBuilder::add_substring_constraint(const T& value, Query condition) {
     // Foundation always returns false for substring operations with a RHS of null or "".
-    m_query.and_query(value.size()
-                      ? std::move(condition)
-                      : std::unique_ptr<Expression>(new FalseExpression));
+    m_query.and_query(value.size() ? std::move(condition)
+                                   : std::unique_ptr<Expression>(new FalseExpression));
 }
 
 template<>
 void QueryBuilder::add_substring_constraint(const Mixed& value, Query condition) {
     // Foundation always returns false for substring operations with a RHS of null or "".
-    m_query.and_query(value.get_string().size()
-                      ? std::move(condition)
-                      : std::unique_ptr<Expression>(new FalseExpression));
+    bool empty = value.is_type(type_String) ? value.get_string().size() : value.get_binary().size();
+    m_query.and_query(empty ? std::move(condition)
+                            : std::unique_ptr<Expression>(new FalseExpression));
 }
 
 
@@ -685,6 +684,28 @@ Query make_diacritic_insensitive_constraint(NSPredicateOperatorType operatorType
 template <typename> struct AlwaysFalse : std::false_type {};
 
 template <typename C, typename T>
+Query make_lexicographical_constraint(NSPredicateOperatorType operatorType,
+                                      bool caseSensitive,
+                                      C& column, T const& value) {
+    if (!caseSensitive) {
+        throwException(@"Invalid predicate",
+                       @"Lexicographical comparisons must be case-sensitive");
+    }
+    switch (operatorType) {
+        case NSLessThanPredicateOperatorType:
+            return column < value;
+        case NSLessThanOrEqualToPredicateOperatorType:
+            return column <= value;
+        case NSGreaterThanPredicateOperatorType:
+            return column > value;
+        case NSGreaterThanOrEqualToPredicateOperatorType:
+            return column >= value;
+        default:
+            REALM_COMPILER_HINT_UNREACHABLE();
+    }
+}
+
+template <typename C, typename T>
 Query make_diacritic_sensitive_constraint(NSPredicateOperatorType operatorType,
                                           bool caseSensitive, C& column, T const& value)
 {
@@ -701,6 +722,11 @@ Query make_diacritic_sensitive_constraint(NSPredicateOperatorType operatorType,
             return column.not_equal(value, caseSensitive);
         case NSLikePredicateOperatorType:
             return column.like(value, caseSensitive);
+        case NSLessThanPredicateOperatorType:
+        case NSLessThanOrEqualToPredicateOperatorType:
+        case NSGreaterThanPredicateOperatorType:
+        case NSGreaterThanOrEqualToPredicateOperatorType:
+            return make_lexicographical_constraint(operatorType, caseSensitive, column, value);
         default: {
             if constexpr (is_any_v<C, Columns<String>, Columns<Lst<String>>, Columns<Set<String>>, ColumnDictionaryKeys>) {
                 unsupportedOperator(RLMPropertyTypeString, operatorType);
@@ -733,29 +759,6 @@ void QueryBuilder::do_add_diacritic_sensitive_string_constraint(NSPredicateOpera
     bool caseSensitive = !(predicateOptions & NSCaseInsensitivePredicateOption);
     Query condition = make_diacritic_sensitive_constraint(operatorType, caseSensitive, column, value);
 
-    // Queries on Mixed used to coerce Strings to Binary and vice-versa. Core
-    // no longer does this, but we can maintain compatibility by doing the
-    // coercion and checking both
-    // NEXT-MAJOR: we should remove this and realign with core's behavior
-    if constexpr (is_any_v<C, Columns<Mixed>, Columns<Lst<Mixed>>, Columns<Set<Mixed>>, Columns<Dictionary>>) {
-        Mixed m = value;
-        if (!m.is_null()) {
-            if (m.get_type() == type_String) {
-                m = m.export_to_type<BinaryData>();
-            }
-            else {
-                m = m.export_to_type<StringData>();
-            }
-
-            // Equality and substring operations need (col == strValue OR col == binValue),
-            // but not equals needs (col != strValue AND col != binValue)
-            if (operatorType != NSNotEqualToPredicateOperatorType) {
-                condition.Or();
-            }
-
-            condition.and_query(make_diacritic_sensitive_constraint(operatorType, caseSensitive, column, m));
-        }
-    }
     switch (operatorType) {
         case NSBeginsWithPredicateOperatorType:
         case NSEndsWithPredicateOperatorType:
@@ -773,16 +776,14 @@ template <typename C, typename T>
 void QueryBuilder::add_diacritic_sensitive_string_constraint(NSPredicateOperatorType operatorType,
                                                              NSComparisonPredicateOptions predicateOptions,
                                                              C&& column, T&& value) {
-    if constexpr (is_any_v<C, Columns<Dictionary>>) {
-        // This nesting isnt pretty but without it the compiler will complain about `T` having no known
-        // conversion from Columns<StringData> to Mixed. This is due to the fact that all values on a
-        // dictionary column are boxed in Mixed.
-        if constexpr (is_any_v<T, Mixed, BinaryData, StringData>) {
-            do_add_diacritic_sensitive_string_constraint(operatorType, predicateOptions, std::forward<C>(column), value);
-        }
+
+    if constexpr (is_any_v<C, Columns<Dictionary>> && is_any_v<T, Columns<StringData>, Columns<BinaryData>>) {
+        // Core only implements these for Columns<Mixed> due to Dictionary being Mixed internall
+        throwException(@"Unsupported predicate",
+                       @"String comparisons on a Dictionary and another property are only implemented for AnyRealmValue properties.");
     }
     else {
-        do_add_diacritic_sensitive_string_constraint(operatorType, predicateOptions, std::forward<C>(column), value);
+        do_add_diacritic_sensitive_string_constraint(operatorType, predicateOptions, std::forward<C>(column), std::forward<T>(value));
     }
 }
 
@@ -791,7 +792,7 @@ void QueryBuilder::add_string_constraint(NSPredicateOperatorType operatorType,
                                          NSComparisonPredicateOptions predicateOptions,
                                          C&& column, T&& value) {
     if (!(predicateOptions & NSDiacriticInsensitivePredicateOption)) {
-        add_diacritic_sensitive_string_constraint(operatorType, predicateOptions, std::forward<C>(column), std::move(value));
+        add_diacritic_sensitive_string_constraint(operatorType, predicateOptions, std::forward<C>(column), std::forward<T>(value));
         return;
     }
 
@@ -1047,7 +1048,7 @@ void convert_null(T&& value, Fn&& fn) {
         fn(null());
     }
     else {
-        fn(value);
+        fn(std::forward<T>(value));
     }
 }
 
@@ -1427,15 +1428,15 @@ void QueryBuilder::add_collection_operation_constraint(NSPredicateOperatorType o
                                                        CollectionOperation const& collectionOperation, R&& rhs,
                                                        NSComparisonPredicateOptions options)
 {
-    convert_null(rhs, [&](auto&& rhs) {
+    convert_null(std::forward<R>(rhs), [&]<typename T>(T&& rhs) {
         if (collectionOperation.link_column().is_link()) {
-            add_collection_operation_constraint<Operation, true, false>(operatorType, collectionOperation, std::move(rhs), options);
+            add_collection_operation_constraint<Operation, true, false>(operatorType, collectionOperation, std::forward<T>(rhs), options);
         }
         else if (collectionOperation.column().property().dictionary) {
-            add_collection_operation_constraint<Operation, false, true>(operatorType, collectionOperation, std::move(rhs), options);
+            add_collection_operation_constraint<Operation, false, true>(operatorType, collectionOperation, std::forward<T>(rhs), options);
         }
         else {
-            add_collection_operation_constraint<Operation, false, false>(operatorType, collectionOperation, std::move(rhs), options);
+            add_collection_operation_constraint<Operation, false, false>(operatorType, collectionOperation, std::forward<T>(rhs), options);
         }
     });
 }
@@ -1465,8 +1466,8 @@ void QueryBuilder::add_collection_operation_constraint(NSPredicateOperatorType o
             auto& column = collectionOperation.link_column();
             RLMPropertyType type = column.type();
             auto rhsValue = value_of_type<Int>(rhs);
-            auto continuation = [&](auto t) {
-                add_numeric_constraint(type, operatorType, column.resolve<std::decay_t<decltype(*t)>>().size(), rhsValue);
+            auto continuation = [&]<typename T>(T *) {
+                add_numeric_constraint(type, operatorType, column.resolve<T>().size(), rhsValue);
             };
 
             switch (type) {
@@ -1498,16 +1499,16 @@ void QueryBuilder::add_collection_operation_constraint(NSPredicateOperatorType o
             }
         }
         case CollectionOperation::Minimum:
-            add_collection_operation_constraint<CollectionOperation::Minimum>(operatorType, collectionOperation, std::move(rhs), comparisonOptions);
+            add_collection_operation_constraint<CollectionOperation::Minimum>(operatorType, collectionOperation, std::forward<R>(rhs), comparisonOptions);
             break;
         case CollectionOperation::Maximum:
-            add_collection_operation_constraint<CollectionOperation::Maximum>(operatorType, collectionOperation, std::move(rhs), comparisonOptions);
+            add_collection_operation_constraint<CollectionOperation::Maximum>(operatorType, collectionOperation, std::forward<R>(rhs), comparisonOptions);
             break;
         case CollectionOperation::Sum:
-            add_collection_operation_constraint<CollectionOperation::Sum>(operatorType, collectionOperation, std::move(rhs), comparisonOptions);
+            add_collection_operation_constraint<CollectionOperation::Sum>(operatorType, collectionOperation, std::forward<R>(rhs), comparisonOptions);
             break;
         case CollectionOperation::Average:
-            add_collection_operation_constraint<CollectionOperation::Average>(operatorType, collectionOperation, std::move(rhs), comparisonOptions);
+            add_collection_operation_constraint<CollectionOperation::Average>(operatorType, collectionOperation, std::forward<R>(rhs), comparisonOptions);
             break;
         case CollectionOperation::AllKeys: {
             // BETWEEN and IN are not supported by @allKeys as the parsing for collection

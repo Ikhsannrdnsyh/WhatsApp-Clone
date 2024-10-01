@@ -952,6 +952,8 @@ PODS:
   - BoringSSL-GRPC/Implementation (0.0.32):
     - BoringSSL-GRPC/Interface (= 0.0.32)
   - BoringSSL-GRPC/Interface (0.0.32)
+  - Firebase (10.29.0):
+    - Firebase/Core (= 10.29.0)
   - Firebase/Analytics (10.29.0):
     - Firebase/Core
   - Firebase/Auth (10.29.0):
@@ -1195,11 +1197,11 @@ PODS:
   - ProgressHUD (14.1.1)
   - PromisesObjC (2.4.0)
   - PryntTrimmerView (4.0.2)
-  - Realm (10.52.3):
-    - Realm/Headers (= 10.52.3)
-  - Realm/Headers (10.52.3)
-  - RealmSwift (10.52.3):
-    - Realm (= 10.52.3)
+  - Realm (20.0.0):
+    - Realm/Headers (= 20.0.0)
+  - Realm/Headers (20.0.0)
+  - RealmSwift (20.0.0):
+    - Realm (= 20.0.0)
   - RecaptchaInterop (100.0.0)
   - SKPhotoBrowser (7.1.0)
   - SteviaLayout (5.1.2)
@@ -1208,6 +1210,7 @@ PODS:
     - SteviaLayout (= 5.1.2)
 
 DEPENDENCIES:
+  - Firebase
   - Firebase/Analytics
   - Firebase/Auth
   - Firebase/Core
@@ -1292,13 +1295,13 @@ SPEC CHECKSUMS:
   ProgressHUD: abb9136ae23c85204236828562cb9a8ec98efb44
   PromisesObjC: f5707f49cb48b9636751c5b2e7d227e43fba9f47
   PryntTrimmerView: 6a43cc90df5d99addeabd33d4ba09b1365322130
-  Realm: f9d340f510309e52a393d65c56103ef524d88a43
-  RealmSwift: 673454b09bc096853ee530e824847f38cdc21243
+  Realm: a799b5f9145623fb0bfe149fe81422863631dd0f
+  RealmSwift: f8c4354ebd5053343e6ab9f4eda244145308a51e
   RecaptchaInterop: 7d1a4a01a6b2cb1610a47ef3f85f0c411434cb21
   SKPhotoBrowser: cd95b95a6f352fc2a50992721299f75ead77f9ab
   SteviaLayout: 05424e528d643657d39ce72c786e4adf13cfc5f2
   YPImagePicker: afc81b3cffab05a6e7261c5daf80dc31b4e917b4
 
-PODFILE CHECKSUM: d3930868df236c67c4eff585838253c8af7397dd
+PODFILE CHECKSUM: 506d828b6ce1fa4e935523844e6c9038718418d9
 
 COCOAPODS: 1.15.2

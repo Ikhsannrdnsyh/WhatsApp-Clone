@@ -13,7 +13,6 @@ This repository holds the source code for the iOS, macOS, tvOS & watchOS version
 * **Intuitive to Developers:** Realm’s object-oriented data model is simple to learn, doesn’t need an ORM, and lets you write less code.
 * **Built for Mobile:** Realm is fully-featured, lightweight, and efficiently uses memory, disk space, and battery life.
 * **Designed for Offline Use:** Realm’s local database persists data on-disk, so apps work as well offline as they do online.
-* **[MongoDB Atlas Device Sync](https://www.mongodb.com/docs/atlas/app-services/sync/)**: Makes it simple to keep data in sync across users, devices, and your backend in real-time. Get started for free with [a template application](https://github.com/mongodb/template-app-swiftui-todo) and [create the cloud backend](http://mongodb.com/realm/register?utm_medium=github_atlas_CTA&utm_source=realm_swift_github).
 
 ## Object-Oriented: Streamline Your Code
 
@@ -107,8 +106,11 @@ Data can be encrypted in-flight and at-rest, keeping even the most sensitive dat
 ```swift
 // Generate a random encryption key
 var key = Data(count: 64)
-_ = key.withUnsafeMutableBytes { bytes in
-    SecRandomCopyBytes(kSecRandomDefault, 64, bytes)
+_ = key.withUnsafeMutableBytes { (pointer: UnsafeMutableRawBufferPointer) in
+    guard let baseAddress = pointer.baseAddress else {
+        fatalError("Failed to obtain base address")
+    }
+    SecRandomCopyBytes(kSecRandomDefault, 64, baseAddress)
 }
 
 // Add the encryption key to the config and open the realm
@@ -125,11 +127,9 @@ We support installing Realm via Swift Package Manager, CocoaPods, Carthage, or b
 
 For more information, see the detailed instructions in our [docs](https://www.mongodb.com/docs/atlas/device-sdks/sdk/swift/install/).
 
-Interested in getting started for free with [a template application](https://github.com/mongodb/template-app-swiftui-todo) that includes a cloud backend and Sync? [Create a MongoDB Atlas Account](http://mongodb.com/realm/register?utm_medium=github_atlas_CTA&utm_source=realm_swift_github).
-
 ## Documentation
 
-The documentation can be found at [mongodb.com/docs/atlas/device-sdks/sdk/swift/](https://www.mongodb.com/docs/atlas/device-sdks/sdk/swift//).
+The documentation can be found at [mongodb.com/docs/atlas/device-sdks/sdk/swift/](https://www.mongodb.com/docs/atlas/device-sdks/sdk/swift/).
 The API reference is located at [mongodb.com/docs/realm-sdks/swift/latest/](https://www.mongodb.com/docs/realm-sdks/swift/latest/)
 
 ## Getting Help
@@ -144,7 +144,7 @@ In case you don't want to use the precompiled version, you can build Realm yours
 
 Prerequisites:
 
-* Building Realm requires Xcode 14.1 or newer.
+* Building Realm requires Xcode 15.3 or newer.
 * Building Realm documentation requires [jazzy](https://github.com/realm/jazzy)
 
 Once you have all the necessary prerequisites, building Realm just takes a single command: `sh build.sh build`.
