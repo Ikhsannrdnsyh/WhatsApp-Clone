@@ -9,6 +9,10 @@ import Foundation
 import Firebase
 
 class StartChatHelper{
+    static let shared = StartChatHelper()
+    
+    private init(){}
+    
     //MARK: - Start Chat
     func startChat(user1: User, user2: User) -> String {
         let chatRoomId = getChatRoomId(user1ID: user1.id, user2ID: user2.id)
