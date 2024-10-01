@@ -27,6 +27,7 @@
 		01B84D0A2C71E02900EF28CC /* ContactsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01B84D092C71E02900EF28CC /* ContactsTableViewCell.swift */; };
 		01B84D0C2C71E0D100EF28CC /* ContactsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01B84D0B2C71E0D100EF28CC /* ContactsTableViewController.swift */; };
 		01DF60E52CABDC6F00B93B63 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01DF60E42CABDC6F00B93B63 /* Extension.swift */; };
+		01DF60E72CABDEE000B93B63 /* StartChatHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01DF60E62CABDEE000B93B63 /* StartChatHelper.swift */; };
 		B9D4E609150AE7C33DDC154D /* Pods_WhatsAppClone.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9DAE0B6C7C8D19882B76C6A /* Pods_WhatsAppClone.framework */; };
 /* End PBXBuildFile section */
 
@@ -55,6 +56,7 @@
 		01B84D092C71E02900EF28CC /* ContactsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsTableViewCell.swift; sourceTree = "<group>"; };
 		01B84D0B2C71E0D100EF28CC /* ContactsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsTableViewController.swift; sourceTree = "<group>"; };
 		01DF60E42CABDC6F00B93B63 /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
+		01DF60E62CABDEE000B93B63 /* StartChatHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartChatHelper.swift; sourceTree = "<group>"; };
 		78010CD4DA0C507A3FD80EB8 /* Pods-WhatsAppClone.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WhatsAppClone.debug.xcconfig"; path = "Target Support Files/Pods-WhatsAppClone/Pods-WhatsAppClone.debug.xcconfig"; sourceTree = "<group>"; };
 		A855FDEC1EBE3FF5A3EA6AA6 /* Pods-WhatsAppClone.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WhatsAppClone.release.xcconfig"; path = "Target Support Files/Pods-WhatsAppClone/Pods-WhatsAppClone.release.xcconfig"; sourceTree = "<group>"; };
 		D9DAE0B6C7C8D19882B76C6A /* Pods_WhatsAppClone.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WhatsAppClone.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -163,6 +165,7 @@
 			children = (
 				01B84D062C71C96600EF28CC /* Util.swift */,
 				01DF60E42CABDC6F00B93B63 /* Extension.swift */,
+				01DF60E62CABDEE000B93B63 /* StartChatHelper.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -309,6 +312,7 @@
 			files = (
 				018BECB32C69E7DB00057577 /* LoginViewController.swift in Sources */,
 				018BECA32C68D24D00057577 /* ViewController.swift in Sources */,
+				01DF60E72CABDEE000B93B63 /* StartChatHelper.swift in Sources */,
 				018BEC9F2C68D24D00057577 /* AppDelegate.swift in Sources */,
 				01B84D012C6B70BD00EF28CC /* EditTableViewController.swift in Sources */,
 				01B84D0A2C71E02900EF28CC /* ContactsTableViewCell.swift in Sources */,

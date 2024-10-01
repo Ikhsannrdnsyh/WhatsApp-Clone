@@ -10,4 +10,6 @@ import Foundation
 public let kCurrentUser = "key_current_user"
 public let kStorageReference = "gs://whatsappclone-2dac6.appspot.com"
 
+public let kChatRoomId = "chatRoomID"
+
 public let kLimitDownload = 100
