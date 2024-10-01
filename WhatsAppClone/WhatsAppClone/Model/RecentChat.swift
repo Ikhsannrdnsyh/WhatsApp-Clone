@@ -10,8 +10,8 @@ import FirebaseFirestore
 
 struct RecentChat: Codable {
     var id = ""
-    var chatRoom = ""
-    var senderID = ""
+    var chatRoomId = ""
+    var senderId = ""
     var senderName = ""
     var receiverID = ""
     var receiverName = ""
