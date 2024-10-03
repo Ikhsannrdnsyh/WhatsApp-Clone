@@ -20,10 +20,18 @@ class ChatViewController: MessagesViewController {
     
     private var refreshController: UIRefreshControl = UIRefreshControl()
     
-    //MARK: -Input bar vars
+    //MARK: - Input bar vars
     private var attachButton: InputBarButtonItem!
     private var photoButton: InputBarButtonItem!
     private var micButton: InputBarButtonItem!
+    
+    
+    
+    //MARK: -
+    let currentUser = MKSender(senderId: User.currentID, displayName: User.currentUser!.username)
+    var mkMessages: [MKMessage] = []
+    
+    
 
 
    
