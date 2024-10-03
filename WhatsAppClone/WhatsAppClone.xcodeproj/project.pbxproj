@@ -31,6 +31,11 @@
 		01DF60E92CABE8B500B93B63 /* FirebaseRecentChatListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01DF60E82CABE8B500B93B63 /* FirebaseRecentChatListener.swift */; };
 		01DF60EB2CABFD8300B93B63 /* RecentChatTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01DF60EA2CABFD8300B93B63 /* RecentChatTableViewController.swift */; };
 		01DF60EE2CAE46BB00B93B63 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01DF60ED2CAE46BB00B93B63 /* ChatViewController.swift */; };
+		01DF60F12CAE554F00B93B63 /* MessageDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01DF60F02CAE554F00B93B63 /* MessageDataSource.swift */; };
+		01DF60F32CAE55CA00B93B63 /* MessageCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01DF60F22CAE55CA00B93B63 /* MessageCellDelegate.swift */; };
+		01DF60F52CAE55FC00B93B63 /* MessagesDisplayDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01DF60F42CAE55FC00B93B63 /* MessagesDisplayDelegate.swift */; };
+		01DF60F72CAE564300B93B63 /* MessagesLayoutDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01DF60F62CAE564200B93B63 /* MessagesLayoutDelegate.swift */; };
+		01DF60F92CAE569E00B93B63 /* InputBarAccessoryViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01DF60F82CAE569E00B93B63 /* InputBarAccessoryViewDelegate.swift */; };
 		B9D4E609150AE7C33DDC154D /* Pods_WhatsAppClone.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9DAE0B6C7C8D19882B76C6A /* Pods_WhatsAppClone.framework */; };
 /* End PBXBuildFile section */
 
@@ -63,6 +68,11 @@
 		01DF60E82CABE8B500B93B63 /* FirebaseRecentChatListener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseRecentChatListener.swift; sourceTree = "<group>"; };
 		01DF60EA2CABFD8300B93B63 /* RecentChatTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentChatTableViewController.swift; sourceTree = "<group>"; };
 		01DF60ED2CAE46BB00B93B63 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
+		01DF60F02CAE554F00B93B63 /* MessageDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageDataSource.swift; sourceTree = "<group>"; };
+		01DF60F22CAE55CA00B93B63 /* MessageCellDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCellDelegate.swift; sourceTree = "<group>"; };
+		01DF60F42CAE55FC00B93B63 /* MessagesDisplayDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesDisplayDelegate.swift; sourceTree = "<group>"; };
+		01DF60F62CAE564200B93B63 /* MessagesLayoutDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesLayoutDelegate.swift; sourceTree = "<group>"; };
+		01DF60F82CAE569E00B93B63 /* InputBarAccessoryViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputBarAccessoryViewDelegate.swift; sourceTree = "<group>"; };
 		78010CD4DA0C507A3FD80EB8 /* Pods-WhatsAppClone.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WhatsAppClone.debug.xcconfig"; path = "Target Support Files/Pods-WhatsAppClone/Pods-WhatsAppClone.debug.xcconfig"; sourceTree = "<group>"; };
 		A855FDEC1EBE3FF5A3EA6AA6 /* Pods-WhatsAppClone.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WhatsAppClone.release.xcconfig"; path = "Target Support Files/Pods-WhatsAppClone/Pods-WhatsAppClone.release.xcconfig"; sourceTree = "<group>"; };
 		D9DAE0B6C7C8D19882B76C6A /* Pods_WhatsAppClone.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WhatsAppClone.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -191,9 +201,22 @@
 		01DF60EC2CAE469600B93B63 /* ChatView */ = {
 			isa = PBXGroup;
 			children = (
+				01DF60EF2CAE551A00B93B63 /* ChatViewExtension */,
 				01DF60ED2CAE46BB00B93B63 /* ChatViewController.swift */,
 			);
 			path = ChatView;
+			sourceTree = "<group>";
+		};
+		01DF60EF2CAE551A00B93B63 /* ChatViewExtension */ = {
+			isa = PBXGroup;
+			children = (
+				01DF60F02CAE554F00B93B63 /* MessageDataSource.swift */,
+				01DF60F22CAE55CA00B93B63 /* MessageCellDelegate.swift */,
+				01DF60F42CAE55FC00B93B63 /* MessagesDisplayDelegate.swift */,
+				01DF60F62CAE564200B93B63 /* MessagesLayoutDelegate.swift */,
+				01DF60F82CAE569E00B93B63 /* InputBarAccessoryViewDelegate.swift */,
+			);
+			path = ChatViewExtension;
 			sourceTree = "<group>";
 		};
 		B096DB579D7CD782D1DAE14A /* Frameworks */ = {
@@ -328,23 +351,28 @@
 			buildActionMask = 2147483647;
 			files = (
 				018BECB32C69E7DB00057577 /* LoginViewController.swift in Sources */,
+				01DF60F92CAE569E00B93B63 /* InputBarAccessoryViewDelegate.swift in Sources */,
 				018BECA32C68D24D00057577 /* ViewController.swift in Sources */,
 				01DF60EE2CAE46BB00B93B63 /* ChatViewController.swift in Sources */,
 				01DF60E92CABE8B500B93B63 /* FirebaseRecentChatListener.swift in Sources */,
 				01DF60E72CABDEE000B93B63 /* StartChatHelper.swift in Sources */,
 				018BEC9F2C68D24D00057577 /* AppDelegate.swift in Sources */,
+				01DF60F72CAE564300B93B63 /* MessagesLayoutDelegate.swift in Sources */,
 				01B84D012C6B70BD00EF28CC /* EditTableViewController.swift in Sources */,
 				01B84D0A2C71E02900EF28CC /* ContactsTableViewCell.swift in Sources */,
 				018BECBE2C69FDFA00057577 /* FirebaseUserListener.swift in Sources */,
 				01752D502C75C9F4006BD3F1 /* ProfileTableViewController.swift in Sources */,
 				01B84D0C2C71E0D100EF28CC /* ContactsTableViewController.swift in Sources */,
 				018BECB52C69F38500057577 /* User.swift in Sources */,
+				01DF60F32CAE55CA00B93B63 /* MessageCellDelegate.swift in Sources */,
 				018BECA12C68D24D00057577 /* SceneDelegate.swift in Sources */,
 				01B84D072C71C96600EF28CC /* Util.swift in Sources */,
 				01B84D042C71C20100EF28CC /* FirebaseStorageHelper.swift in Sources */,
+				01DF60F12CAE554F00B93B63 /* MessageDataSource.swift in Sources */,
 				01DF60EB2CABFD8300B93B63 /* RecentChatTableViewController.swift in Sources */,
 				01752D522C75D168006BD3F1 /* RecentChat.swift in Sources */,
 				013F3E912CA2B757001E6F96 /* RecentChatTableViewCell.swift in Sources */,
+				01DF60F52CAE55FC00B93B63 /* MessagesDisplayDelegate.swift in Sources */,
 				018BECBC2C69FCEA00057577 /* FCollectionReference.swift in Sources */,
 				018BECBA2C69F9DD00057577 /* Constants.swift in Sources */,
 				01DF60E52CABDC6F00B93B63 /* Extension.swift in Sources */,
