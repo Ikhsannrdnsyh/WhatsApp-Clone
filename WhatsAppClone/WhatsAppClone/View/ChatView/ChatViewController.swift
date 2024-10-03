@@ -129,10 +129,14 @@ class ChatViewController: MessagesViewController {
         //set button
         messageInputBar.setStackViewItems([attachButton], forStack: .left, animated: false)
         messageInputBar.setLeftStackViewWidthConstant(to: 24, animated: false)
-        messageInputBar.setStackViewItems([photoButton], forStack: .right, animated: false)
-        messageInputBar.setStackViewItems([micButton], forStack: .right, animated: false)
+//        messageInputBar.setStackViewItems([photoButton], forStack: .right, animated: false)
+//        messageInputBar.setStackViewItems([micButton], forStack: .right, animated: false)
         
     }
     
-
+    //MARK: - actions
+    func sendMessage(text: String?, photo: UIImage?, video: String?, audio: String?, audioDuration: Float = 0.0){
+        print("send message: ", text!)
+        OutgoingMessageHelper.send(chatId: chatId, text: text, photo: photo, video: video, audio: audio, memberIds: [User.currentID, recipientId])
+    }
 }

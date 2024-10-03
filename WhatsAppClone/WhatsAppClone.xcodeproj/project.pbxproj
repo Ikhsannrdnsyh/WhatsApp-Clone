@@ -40,6 +40,7 @@
 		01DF60FD2CAE583600B93B63 /* MKMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01DF60FC2CAE583600B93B63 /* MKMessage.swift */; };
 		01DF61002CAE5A3600B93B63 /* LocalMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01DF60FF2CAE5A3600B93B63 /* LocalMessage.swift */; };
 		01DF61022CAE664D00B93B63 /* DBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01DF61012CAE664D00B93B63 /* DBManager.swift */; };
+		01DF61042CAE78F400B93B63 /* OutgoingMessageHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01DF61032CAE78F400B93B63 /* OutgoingMessageHelper.swift */; };
 		B9D4E609150AE7C33DDC154D /* Pods_WhatsAppClone.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9DAE0B6C7C8D19882B76C6A /* Pods_WhatsAppClone.framework */; };
 /* End PBXBuildFile section */
 
@@ -81,6 +82,7 @@
 		01DF60FC2CAE583600B93B63 /* MKMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MKMessage.swift; sourceTree = "<group>"; };
 		01DF60FF2CAE5A3600B93B63 /* LocalMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalMessage.swift; sourceTree = "<group>"; };
 		01DF61012CAE664D00B93B63 /* DBManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBManager.swift; sourceTree = "<group>"; };
+		01DF61032CAE78F400B93B63 /* OutgoingMessageHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutgoingMessageHelper.swift; sourceTree = "<group>"; };
 		78010CD4DA0C507A3FD80EB8 /* Pods-WhatsAppClone.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WhatsAppClone.debug.xcconfig"; path = "Target Support Files/Pods-WhatsAppClone/Pods-WhatsAppClone.debug.xcconfig"; sourceTree = "<group>"; };
 		A855FDEC1EBE3FF5A3EA6AA6 /* Pods-WhatsAppClone.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WhatsAppClone.release.xcconfig"; path = "Target Support Files/Pods-WhatsAppClone/Pods-WhatsAppClone.release.xcconfig"; sourceTree = "<group>"; };
 		D9DAE0B6C7C8D19882B76C6A /* Pods_WhatsAppClone.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WhatsAppClone.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -197,6 +199,7 @@
 				01DF60E42CABDC6F00B93B63 /* Extension.swift */,
 				01DF60E62CABDEE000B93B63 /* StartChatHelper.swift */,
 				01DF61012CAE664D00B93B63 /* DBManager.swift */,
+				01DF61032CAE78F400B93B63 /* OutgoingMessageHelper.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -377,6 +380,7 @@
 				01DF60E92CABE8B500B93B63 /* FirebaseRecentChatListener.swift in Sources */,
 				01DF60E72CABDEE000B93B63 /* StartChatHelper.swift in Sources */,
 				018BEC9F2C68D24D00057577 /* AppDelegate.swift in Sources */,
+				01DF61042CAE78F400B93B63 /* OutgoingMessageHelper.swift in Sources */,
 				01DF61022CAE664D00B93B63 /* DBManager.swift in Sources */,
 				01DF60FD2CAE583600B93B63 /* MKMessage.swift in Sources */,
 				01DF60F72CAE564300B93B63 /* MessagesLayoutDelegate.swift in Sources */,
