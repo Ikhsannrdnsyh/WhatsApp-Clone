@@ -31,6 +31,7 @@ class MKMessage: NSObject, MessageType {
         
         self.isIncoming = User.currentID != mkSender.senderId
         
+        
 //        switch message.type{
 //            case ""
 //            
