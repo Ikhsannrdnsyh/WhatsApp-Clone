@@ -8,6 +8,7 @@
 import UIKit
 import MessageKit
 import InputBarAccessoryView
+import RealmSwift
 
 class ChatViewController: MessagesViewController {
     
@@ -25,12 +26,14 @@ class ChatViewController: MessagesViewController {
     private var photoButton: InputBarButtonItem!
     private var micButton: InputBarButtonItem!
     
+    let realm = try! Realm()
+    
     
     
     //MARK: -
     let currentUser = MKSender(senderId: User.currentID, displayName: User.currentUser!.username)
     var mkMessages: [MKMessage] = []
-    
+    var allLocalMessages: Results<LocalMessage>!
     
 
 
@@ -58,6 +61,9 @@ class ChatViewController: MessagesViewController {
         
         configureMessageCollectionView()
         configureMessageInputBar()
+        
+        //Load Chat
+        loadChats()
     }
     
     //MARK: -Config UI
@@ -137,5 +143,15 @@ class ChatViewController: MessagesViewController {
     //MARK: - actions
     func sendMessage(text: String?, photo: UIImage?, video: String?, audio: String?, audioDuration: Float = 0.0){
         OutgoingMessageHelper.send(chatId: chatId, text: text, photo: photo, video: video, audio: audio, memberIds: [User.currentID, recipientId])
+    }
+    
+    //MARK: - Load Chats
+    
+    private func loadChats(){
+        let predicate = NSPredicate(format: "\(kChatRoomId) = %@", chatId)
+        
+        allLocalMessages = realm.objects(LocalMessage.self).filter(predicate).sorted(byKeyPath: kDate, ascending: true)
+        
+        print("got \(allLocalMessages.count) messages")
     }
 }
