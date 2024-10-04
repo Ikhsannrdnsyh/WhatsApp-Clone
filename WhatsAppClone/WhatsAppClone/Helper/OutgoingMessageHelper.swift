@@ -33,7 +33,7 @@ class OutgoingMessageHelper{
         
         //send message/ save to firebase
         for id in memberIds {
-            print("save message to member \(id)")
+            FirebaseMessageListener.shared.saveMessage(message, memberId: id)
         }
     }
 }
