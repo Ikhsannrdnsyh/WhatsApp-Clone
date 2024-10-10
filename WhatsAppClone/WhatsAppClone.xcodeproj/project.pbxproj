@@ -11,6 +11,7 @@
 		016D8BBC2C6B5F41008997E1 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 016D8BBB2C6B5F41008997E1 /* SettingsTableViewController.swift */; };
 		01752D502C75C9F4006BD3F1 /* ProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01752D4F2C75C9F4006BD3F1 /* ProfileTableViewController.swift */; };
 		01752D522C75D168006BD3F1 /* RecentChat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01752D512C75D168006BD3F1 /* RecentChat.swift */; };
+		018B8DDC2CB80E43007EDE42 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 018BECA72C68D24F00057577 /* Assets.xcassets */; };
 		018BEC9F2C68D24D00057577 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 018BEC9E2C68D24D00057577 /* AppDelegate.swift */; };
 		018BECA12C68D24D00057577 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 018BECA02C68D24D00057577 /* SceneDelegate.swift */; };
 		018BECA32C68D24D00057577 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 018BECA22C68D24D00057577 /* ViewController.swift */; };
@@ -43,6 +44,8 @@
 		01DF61042CAE78F400B93B63 /* OutgoingMessageHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01DF61032CAE78F400B93B63 /* OutgoingMessageHelper.swift */; };
 		01DF61062CAFBAE000B93B63 /* FirebaseMessageListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01DF61052CAFBAE000B93B63 /* FirebaseMessageListener.swift */; };
 		01DF61082CAFC25700B93B63 /* IncomingMessageHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01DF61072CAFC25700B93B63 /* IncomingMessageHelper.swift */; };
+		01DF610B2CB7F2CA00B93B63 /* CustomTextChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01DF610A2CB7F2CA00B93B63 /* CustomTextChatView.swift */; };
+		01DF61112CB7F45600B93B63 /* CustomTextChatView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 01DF61102CB7F45600B93B63 /* CustomTextChatView.xib */; };
 		B9D4E609150AE7C33DDC154D /* Pods_WhatsAppClone.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9DAE0B6C7C8D19882B76C6A /* Pods_WhatsAppClone.framework */; };
 /* End PBXBuildFile section */
 
@@ -64,6 +67,9 @@
 		018BECB92C69F9DD00057577 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		018BECBB2C69FCEA00057577 /* FCollectionReference.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FCollectionReference.swift; sourceTree = "<group>"; };
 		018BECBD2C69FDFA00057577 /* FirebaseUserListener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseUserListener.swift; sourceTree = "<group>"; };
+		0190D4762CB801D100E40152 /* realm-monorepo.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = "realm-monorepo.xcframework"; path = "Pods/Realm/core/realm-monorepo.xcframework"; sourceTree = "<group>"; };
+		0190D47A2CB8020400E40152 /* Realm.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Realm.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		0190D47B2CB8020400E40152 /* RealmSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = RealmSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		01AA0C332CA7EDF20097AB6C /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		01B84D002C6B70BD00EF28CC /* EditTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTableViewController.swift; sourceTree = "<group>"; };
 		01B84D032C71C20100EF28CC /* FirebaseStorageHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseStorageHelper.swift; sourceTree = "<group>"; };
@@ -87,6 +93,8 @@
 		01DF61032CAE78F400B93B63 /* OutgoingMessageHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutgoingMessageHelper.swift; sourceTree = "<group>"; };
 		01DF61052CAFBAE000B93B63 /* FirebaseMessageListener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseMessageListener.swift; sourceTree = "<group>"; };
 		01DF61072CAFC25700B93B63 /* IncomingMessageHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomingMessageHelper.swift; sourceTree = "<group>"; };
+		01DF610A2CB7F2CA00B93B63 /* CustomTextChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextChatView.swift; sourceTree = "<group>"; };
+		01DF61102CB7F45600B93B63 /* CustomTextChatView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomTextChatView.xib; sourceTree = "<group>"; };
 		78010CD4DA0C507A3FD80EB8 /* Pods-WhatsAppClone.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WhatsAppClone.debug.xcconfig"; path = "Target Support Files/Pods-WhatsAppClone/Pods-WhatsAppClone.debug.xcconfig"; sourceTree = "<group>"; };
 		A855FDEC1EBE3FF5A3EA6AA6 /* Pods-WhatsAppClone.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WhatsAppClone.release.xcconfig"; path = "Target Support Files/Pods-WhatsAppClone/Pods-WhatsAppClone.release.xcconfig"; sourceTree = "<group>"; };
 		D9DAE0B6C7C8D19882B76C6A /* Pods_WhatsAppClone.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WhatsAppClone.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -222,6 +230,7 @@
 		01DF60EC2CAE469600B93B63 /* ChatView */ = {
 			isa = PBXGroup;
 			children = (
+				01DF61092CB7F2AF00B93B63 /* CustomCell */,
 				01DF60EF2CAE551A00B93B63 /* ChatViewExtension */,
 				01DF60ED2CAE46BB00B93B63 /* ChatViewController.swift */,
 			);
@@ -248,9 +257,21 @@
 			path = DBModel;
 			sourceTree = "<group>";
 		};
+		01DF61092CB7F2AF00B93B63 /* CustomCell */ = {
+			isa = PBXGroup;
+			children = (
+				01DF61102CB7F45600B93B63 /* CustomTextChatView.xib */,
+				01DF610A2CB7F2CA00B93B63 /* CustomTextChatView.swift */,
+			);
+			path = CustomCell;
+			sourceTree = "<group>";
+		};
 		B096DB579D7CD782D1DAE14A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0190D47A2CB8020400E40152 /* Realm.framework */,
+				0190D47B2CB8020400E40152 /* RealmSwift.framework */,
+				0190D4762CB801D100E40152 /* realm-monorepo.xcframework */,
 				D9DAE0B6C7C8D19882B76C6A /* Pods_WhatsAppClone.framework */,
 			);
 			name = Frameworks;
@@ -327,6 +348,8 @@
 			files = (
 				01AA0C342CA7EDF20097AB6C /* GoogleService-Info.plist in Resources */,
 				01AA0C352CA7F2680097AB6C /* Main.storyboard in Resources */,
+				018B8DDC2CB80E43007EDE42 /* Assets.xcassets in Resources */,
+				01DF61112CB7F45600B93B63 /* CustomTextChatView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -413,6 +436,7 @@
 				018BECBA2C69F9DD00057577 /* Constants.swift in Sources */,
 				01DF60E52CABDC6F00B93B63 /* Extension.swift in Sources */,
 				016D8BBC2C6B5F41008997E1 /* SettingsTableViewController.swift in Sources */,
+				01DF610B2CB7F2CA00B93B63 /* CustomTextChatView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

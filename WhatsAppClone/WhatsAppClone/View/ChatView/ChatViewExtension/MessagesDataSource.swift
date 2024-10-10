@@ -21,5 +21,12 @@ extension ChatViewController: MessagesDataSource{
         return mkMessages.count
     }
     
+    func textCell(for message: any MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> UICollectionViewCell? {
+        let cell = messagesCollectionView.dequeueReusableCell(CustomTextChatView.self, for: indexPath)
+        cell.configure(with: message, at: indexPath, and: messagesCollectionView)
+        
+        return cell
+    }
+    
     
 }
