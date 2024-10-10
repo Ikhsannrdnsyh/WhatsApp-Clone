@@ -18,7 +18,7 @@ class CustomTextChatView: MessageContentCell {
     
     
     static let chatViewFont = UIFont.systemFont(ofSize: 18.0)
-    static let chatViewInset = UIEdgeInsets(top: 12, left: 12, bottom: 28, right: 12)
+    static let chatViewInset = UIEdgeInsets(top: 12, left: 12, bottom: 32, right: 12)
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -43,11 +43,13 @@ class CustomTextChatView: MessageContentCell {
     }
     
     override func configure(with message: any MessageType, at indexPath: IndexPath, and messagesCollectionView: MessagesCollectionView) {
+        guard let mkMessage = message as? MKMessage else { return }
+        
         
         switch message.kind{
         case .text(let text):
             messageLabel.text = text
-            infoLabel.text = message.sentDate.time()
+            infoLabel.text = self.getInfoText(mkMessage: mkMessage)
         default:
             break
         }
@@ -67,5 +69,18 @@ class CustomTextChatView: MessageContentCell {
             leftBubbleView.backgroundColor = UIColor(named: "chat_incoming")
             rightBubbleView.backgroundColor = UIColor(named: "chat_incoming")
         }
+    }
+    
+    private func getInfoText(mkMessage: MKMessage) -> String {
+        var text = ""
+        
+        if mkMessage.status == kSend {
+            return "\(mkMessage.sentDate.time()) . Sent"
+        }
+        
+        if mkMessage.status == kRead {
+            return "\(mkMessage.readDate.time()) . Read"
+        }
+        return ""
     }
 }
