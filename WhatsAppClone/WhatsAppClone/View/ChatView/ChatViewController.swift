@@ -67,6 +67,7 @@ class ChatViewController: MessagesViewController {
 
         // Config
         configureHeaderView()
+        configureBackgroundView()
         configureMessageCollectionView()
         configureMessageInputBar()
         configureCustomCell()
@@ -244,6 +245,24 @@ class ChatViewController: MessagesViewController {
         let gesture = UITapGestureRecognizer(target: self, action: #selector(self.onHeaderViewTapAction))
         headerView.addGestureRecognizer(gesture)
         
+    }
+    
+    private func configureBackgroundView(){
+        // setup Background View
+        let bgImageView = UIImageView()
+        bgImageView.image = UIImage(named: "bg_chat")
+        bgImageView.contentMode = .scaleAspectFill
+        bgImageView.translatesAutoresizingMaskIntoConstraints = false
+        
+        messagesCollectionView.backgroundView = bgImageView
+        
+        // setup constraints
+        NSLayoutConstraint.activate([
+            bgImageView.topAnchor.constraint(equalTo: messagesCollectionView.topAnchor),
+            bgImageView.bottomAnchor.constraint(equalTo: messagesCollectionView.bottomAnchor),
+            bgImageView.leadingAnchor.constraint(equalTo: messagesCollectionView.leadingAnchor),
+            bgImageView.trailingAnchor.constraint(equalTo: messagesCollectionView.trailingAnchor),
+        ])
     }
     
     //MARK: - actions
