@@ -13,7 +13,6 @@ import RealmSwift
 class ChatViewController: MessagesViewController {
     
     //MARK: - Vars
-    
     private var chatId = ""
     private var recipientId = ""
     private var recipientName = ""
@@ -26,10 +25,17 @@ class ChatViewController: MessagesViewController {
     private var photoButton: InputBarButtonItem!
     private var micButton: InputBarButtonItem!
     
+    //MARK: - header vars
+    private var headerView: UIView!
+    private var titleLabel: UILabel!
+    private var subTitleLabel: UILabel!
+    private var avatarView: UIImageView!
+    
+    
+    
+    //MARK: - Realm
     let realm = try! Realm()
-    
-    
-    
+ 
     
     let currentUser = MKSender(senderId: User.currentID, displayName: User.currentUser!.username)
     var mkMessages: [MKMessage] = []
@@ -60,13 +66,16 @@ class ChatViewController: MessagesViewController {
         super.viewDidLoad()
 
         // Config
-        
+        configureHeaderView()
         configureMessageCollectionView()
         configureMessageInputBar()
         configureCustomCell()
         
         //Load Chat
         loadChats()
+        
+        // typing status
+        updateTypingStatus(true)
     }
     
     //MARK: - Config UI
@@ -156,9 +165,101 @@ class ChatViewController: MessagesViewController {
         messagesCollectionView.messagesCollectionViewFlowLayout.setMessageOutgoingAvatarSize(.zero)
     }
     
+    private func configureHeaderView(){
+        headerView = {
+            let view = UIView()
+            view.translatesAutoresizingMaskIntoConstraints = false
+            
+            
+            return view
+        }()
+        
+        titleLabel = {
+            let view = UILabel()
+            view.font = UIFont.systemFont(ofSize: 16, weight: .bold)
+            view.textColor = .black
+            view.translatesAutoresizingMaskIntoConstraints = false
+            view.adjustsFontSizeToFitWidth = true
+            
+            return view
+        }()
+        
+        subTitleLabel = {
+            let view = UILabel()
+            view.font = UIFont.systemFont(ofSize: 12, weight: .regular)
+            view.textColor = .darkGray
+            view.translatesAutoresizingMaskIntoConstraints = false
+            view.adjustsFontSizeToFitWidth = true
+            
+            return view
+        }()
+        
+        avatarView = {
+            let view = UIImageView(image: UIImage(named: "person.circle.fill"))
+            view.contentMode = .scaleToFill
+            view.translatesAutoresizingMaskIntoConstraints = false
+            
+            return view
+        }()
+        
+        // Add view
+        headerView.addSubview(titleLabel)
+        headerView.addSubview(subTitleLabel)
+        headerView.addSubview(avatarView)
+        
+        self.navigationItem.titleView = headerView
+        
+        //constraints
+        NSLayoutConstraint.activate([
+            avatarView.widthAnchor.constraint(equalToConstant: 36),
+            avatarView.heightAnchor.constraint(equalToConstant: 36),
+            avatarView.centerYAnchor.constraint(equalTo: headerView.centerYAnchor, constant: 0),
+            avatarView.leadingAnchor.constraint(equalTo: headerView.leadingAnchor, constant: 0),
+            
+            titleLabel.topAnchor.constraint(equalTo: headerView.topAnchor, constant: 0),
+            titleLabel.leadingAnchor.constraint(equalTo: avatarView.trailingAnchor, constant: 8),
+            
+            subTitleLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 0),
+            subTitleLabel.leadingAnchor.constraint(equalTo: avatarView.trailingAnchor, constant: 8),
+            
+            
+        ])
+        
+        if let navBar = self.navigationController?.navigationBar {
+            headerView.widthAnchor.constraint(equalToConstant: navBar.frame.width).isActive = true
+            headerView.heightAnchor.constraint(equalToConstant: navBar.frame.height).isActive = true
+        }
+        // set data
+        
+        titleLabel.text = recipientName
+        subTitleLabel.text = "Tap here for contact info"
+        
+        if !recipientAvatar.isEmpty{
+            FirebaseStorageHelper.downloadImage(url: recipientAvatar) { image in
+                self.avatarView.image = image
+            }
+        }
+        
+        // header view action
+        let gesture = UITapGestureRecognizer(target: self, action: #selector(self.onHeaderViewTapAction))
+        headerView.addGestureRecognizer(gesture)
+        
+    }
+    
     //MARK: - actions
     func sendMessage(text: String?, photo: UIImage?, video: String?, audio: String?, audioDuration: Float = 0.0){
         OutgoingMessageHelper.send(chatId: chatId, text: text, photo: photo, video: video, audio: audio, memberIds: [User.currentID, recipientId])
+    }
+    
+    @objc
+    func onHeaderViewTapAction(){
+        
+        let profileView = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "ProfileView") as! ProfileTableViewController
+        
+        FirebaseUserListener.shared.getUser(by: recipientId) { user in
+            profileView.user = user
+            self.navigationController?.pushViewController(profileView, animated: true)
+        }
     }
     
     //MARK: - Load Chats
@@ -197,5 +298,9 @@ class ChatViewController: MessagesViewController {
         if let newMessage = helper.createMessage(localMessage: message){
             mkMessages.append(newMessage)
         }
+    }
+    
+    private func updateTypingStatus(_ typing: Bool){
+        self.subTitleLabel.text = typing ? "Typing..." : "Tap here for contact info"
     }
 }
