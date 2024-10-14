@@ -74,9 +74,10 @@ class ChatViewController: MessagesViewController {
         
         //Load Chat
         loadChats()
+        listenForNewChat()
         
         // typing status
-        updateTypingStatus(true)
+        updateTypingStatus(false)
     }
     
     //MARK: - Config UI
@@ -345,7 +346,19 @@ class ChatViewController: MessagesViewController {
         }
     }
     
+    private func listenForNewChat(){
+        FirebaseMessageListener.shared.listenForNewChat(User.currentID, collectionId: chatId, lastMessageDate: lastMessageDate())
+    }
+    
     private func updateTypingStatus(_ typing: Bool){
         self.subTitleLabel.text = typing ? "Typing..." : "Tap here for contact info"
+    }
+    
+    //MARK: Helpers
+    
+    private func lastMessageDate() -> Date {
+        let lastMessageDate = allLocalMessages.last?.date ?? Date()
+        
+        return Calendar.current.date(byAdding: .second, value: 1, to: lastMessageDate) ?? lastMessageDate
     }
 }
