@@ -41,6 +41,8 @@ class ChatViewController: MessagesViewController {
     var mkMessages: [MKMessage] = []
     var allLocalMessages: Results<LocalMessage>!
     
+    var typingCounter = 0
+    
     //MARK: Paging
     var maxMessageNumber = 0
     var minMessageNumber = 0
@@ -80,6 +82,7 @@ class ChatViewController: MessagesViewController {
         //Load Chat
         loadChats()
         listenForNewChat()
+        createTypingObserver()
         
         // typing status
         updateTypingStatus(false)
@@ -385,6 +388,34 @@ class ChatViewController: MessagesViewController {
     
     private func listenForNewChat(){
         FirebaseMessageListener.shared.listenForNewChat(User.currentID, collectionId: chatId, lastMessageDate: lastMessageDate())
+    }
+    
+    //MARK: Typing Listener
+    
+    private func createTypingObserver(){
+        FirebaseTypingListener.shared.createTypingObserver(chatRoomId: chatId) { isTyping in
+            DispatchQueue.main.async {
+                self.updateTypingStatus(isTyping)
+            }
+        }
+    }
+    
+    func updateTypingCounter(){
+        typingCounter += 1
+        
+        FirebaseTypingListener.shared.saveTyping(typing: true, chatRoomId: chatId)
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5){
+            self.stopTypingCOunter()
+        }
+        
+    }
+    
+    func stopTypingCOunter(){
+        typingCounter -= 1
+        if typingCounter == 0{
+            FirebaseTypingListener.shared.saveTyping(typing: false, chatRoomId: chatId)
+        }
     }
     
     private func updateTypingStatus(_ typing: Bool){
