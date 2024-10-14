@@ -50,7 +50,6 @@ class ProfileTableViewController: UITableViewController {
     //MARK: - Setup UI
     
     private func setupUI(){
-        avatarImageView.layer.cornerRadius = avatarImageView.frame.width / 2
         
         guard let user = self.user else { return }
         usernameLabel.text = user.username
@@ -58,7 +57,7 @@ class ProfileTableViewController: UITableViewController {
         
         if user.avatar != "" {
             FirebaseStorageHelper.downloadImage(url: user.avatar) { image in
-                self.avatarImageView.image = image
+                self.avatarImageView.image = image?.circleMasked
             }
         }
     }
