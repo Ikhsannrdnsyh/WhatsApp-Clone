@@ -52,6 +52,14 @@ class FirebaseMessageListener {
         }
     }
     
+    func updateMessage(_ message: LocalMessage, memberIds: [String]){
+        let value = [kStatus : kRead, kReadDate : Date()] as [String : Any]
+        
+        for id in memberIds {
+            FirebaseReference(.Message).document(id).collection(message.chatRoomId).document(message.id).updateData(value)
+        }
+    }
+    
     
     //MARK: - Fetch old message
     func fetchOldMessage(_ documentId: String, collectionId: String){

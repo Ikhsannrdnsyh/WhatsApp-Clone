@@ -16,6 +16,9 @@ public let kDate = "date"
 
 public let kSend = "send"
 public let kRead = "read"
+public let kReadDate = "readDate"
+public let kStatus = "status"
+
 public let kText = "text"
 public let kPhoto = "photo"
 public let kVideo = "video"
