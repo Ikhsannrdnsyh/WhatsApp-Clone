@@ -94,7 +94,6 @@ class ChatViewController: MessagesViewController {
     
     private func configureMessageInputBar(){
         messageInputBar.delegate = self
-        //messageInputBar.sendButton.title = ""
         
         // Text view
         messageInputBar.inputTextView.isImagePasteEnabled = false
@@ -120,7 +119,7 @@ class ChatViewController: MessagesViewController {
             let button = InputBarButtonItem()
             button.image = UIImage(systemName: "camera", withConfiguration: UIImage.SymbolConfiguration(pointSize: 30))
             button.tintColor = UIColor.systemBlue
-            button.setSize(CGSize(width: 24.0, height: 24.0), animated: false)
+            button.setSize(CGSize(width: 32.0, height: 32.0), animated: false)
             return button
         }()
         
@@ -128,7 +127,7 @@ class ChatViewController: MessagesViewController {
             let button = InputBarButtonItem()
             button.image = UIImage(systemName: "mic", withConfiguration: UIImage.SymbolConfiguration(pointSize: 30))
             button.tintColor = UIColor.systemBlue
-            button.setSize(CGSize(width: 24.0, height: 24.0), animated: false)
+            button.setSize(CGSize(width: 32.0, height: 32.0), animated: false)
             return button
         }()
         
@@ -146,11 +145,25 @@ class ChatViewController: MessagesViewController {
         }
         
         //set button
-        messageInputBar.setStackViewItems([attachButton], forStack: .left, animated: false)
-        messageInputBar.setLeftStackViewWidthConstant(to: 24, animated: false)
-//        messageInputBar.setStackViewItems([photoButton], forStack: .right, animated: false)
-//        messageInputBar.setStackViewItems([micButton], forStack: .right, animated: false)
         
+        messageInputBar.sendButton.image = UIImage(systemName: "paperplane.fill", withConfiguration: UIImage.SymbolConfiguration(pointSize: 24))
+        messageInputBar.sendButton.title = ""
+        messageInputBar.setStackViewItems([attachButton], forStack: .left, animated: false)
+        messageInputBar.setLeftStackViewWidthConstant(to: 48, animated: false)
+        updateRightButtonsStatus(true)
+        
+    }
+    
+    func updateRightButtonsStatus(_ active: Bool){
+        if active {
+            messageInputBar.setStackViewItems([photoButton, micButton], forStack: .right, animated: false)
+            messageInputBar.setRightStackViewWidthConstant(to: 68, animated: false)
+            
+        } else{
+            messageInputBar.setStackViewItems([messageInputBar.sendButton], forStack: .right, animated: false)
+            messageInputBar.setRightStackViewWidthConstant(to: 68, animated: false)
+            
+        }
     }
     
     private func configureCustomCell(){
@@ -165,6 +178,8 @@ class ChatViewController: MessagesViewController {
         messagesCollectionView.messagesCollectionViewFlowLayout.setMessageIncomingAvatarSize(.zero)
         messagesCollectionView.messagesCollectionViewFlowLayout.setMessageOutgoingAvatarSize(.zero)
     }
+    
+    
     
     private func configureHeaderView(){
         headerView = {
