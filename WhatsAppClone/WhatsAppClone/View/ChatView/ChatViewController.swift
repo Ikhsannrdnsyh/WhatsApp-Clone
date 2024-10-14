@@ -301,7 +301,14 @@ class ChatViewController: MessagesViewController {
     private func loadChats(){
         let predicate = NSPredicate(format: "\(kChatRoomId) = %@", chatId)
         
+        
+        //fetch from realm
         allLocalMessages = realm.objects(LocalMessage.self).filter(predicate).sorted(byKeyPath: kDate, ascending: true)
+        
+        if allLocalMessages.isEmpty{
+            //fetch from firebase
+            fetchOldMessage()
+        }
         
         notificationToken = allLocalMessages.observe({ (changes: RealmCollectionChange) in
             switch changes {
@@ -319,6 +326,10 @@ class ChatViewController: MessagesViewController {
                 print("error when listening meessage ", error.localizedDescription)
             }
         })
+    }
+    
+    private func fetchOldMessage(){
+        FirebaseMessageListener.shared.fetchOldMessage(User.currentID, collectionId: chatId)
     }
     
     private func createMessages(){
