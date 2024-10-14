@@ -10,7 +10,9 @@ import Firebase
 
 class FirebaseMessageListener {
     static let shared = FirebaseMessageListener()
+    
     var newChatListener: ListenerRegistration!
+    var updateChatListener: ListenerRegistration!
     
     private init(){}
     
@@ -33,6 +35,31 @@ class FirebaseMessageListener {
                             }
                         } else {
                             print("Messages doesn't exist")
+                        }
+                    case .failure(let error):
+                        print("Error decoding message: \(error.localizedDescription)")
+                    }
+                }
+            }
+        })
+    }
+    
+    func listenForReadStatus(_ documentId: String, collectionId: String, completion: @escaping (_ updatedMessage: LocalMessage) -> Void ){
+        updateChatListener = FirebaseReference(.Message).document(documentId).collection(collectionId).addSnapshotListener({ snapshot, error in
+            guard let snapshot = snapshot else { return }
+            
+            for change in snapshot.documentChanges {
+                if change.type == .modified {
+                    let result = Result {
+                        try? change.document.data(as: LocalMessage.self)
+                    }
+                    
+                    switch result {
+                    case .success(let message):
+                        if let message = message {
+                            completion(message)
+                        } else {
+                            print("Message doesn't exist")
                         }
                     case .failure(let error):
                         print("Error decoding message: \(error.localizedDescription)")

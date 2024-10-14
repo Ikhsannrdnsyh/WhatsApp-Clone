@@ -86,6 +86,7 @@ class ChatViewController: MessagesViewController {
         
         // typing status
         updateTypingStatus(false)
+        listenForReadStatus()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -411,6 +412,12 @@ class ChatViewController: MessagesViewController {
     
     private func listenForNewChat(){
         FirebaseMessageListener.shared.listenForNewChat(User.currentID, collectionId: chatId, lastMessageDate: lastMessageDate())
+    }
+    
+    private func listenForReadStatus(){
+        FirebaseMessageListener.shared.listenForReadStatus(User.currentID, collectionId: chatId) { updatedMessage in
+            print("updated message \(updatedMessage.status)")
+        }
     }
     
     //MARK: Typing Listener
