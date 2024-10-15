@@ -20,6 +20,7 @@ class ChatViewController: MessagesViewController {
     private var recipientAvatar = ""
     
     private var refreshController: UIRefreshControl = UIRefreshControl()
+    open lazy var audioController = BasicAudioController(messageCollectionView: messagesCollectionView)
     
     //MARK: - Input bar vars
     private var attachButton: InputBarButtonItem!
@@ -109,6 +110,7 @@ class ChatViewController: MessagesViewController {
         super.viewWillDisappear(animated)
         
         FirebaseRecentChatListener.shared.resetRecentChatCounter(chatRoomId: chatId)
+        audioController.stopAnyOngoingPlaying()
     }
     
     //MARK: - Config UI

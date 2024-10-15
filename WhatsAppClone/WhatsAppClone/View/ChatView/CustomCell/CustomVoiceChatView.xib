@@ -14,6 +14,7 @@
                 <outlet property="durationLabel" destination="iWr-Qj-YmO" id="K7c-WP-5ae"/>
                 <outlet property="infoLabel" destination="07c-1Z-zLP" id="Xaz-Ag-H96"/>
                 <outlet property="leftBubble" destination="kvm-rG-jOR" id="JVb-BX-R21"/>
+                <outlet property="playImageView" destination="9GC-Ey-Hk5" id="Eax-XG-jyH"/>
                 <outlet property="rightBubble" destination="czT-C0-2HQ" id="Apy-VY-PbS"/>
             </connections>
         </placeholder>
