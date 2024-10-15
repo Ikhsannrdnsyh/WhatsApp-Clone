@@ -19,23 +19,28 @@ class AudioRecorder: NSObject, AVAudioRecorderDelegate{
         super.init()
         
         //check permisiion
+        checkRecordingPermission()
     }
     
-    @available(iOS 17.0, *)
+    
     func checkRecordingPermission(){
-        switch AVAudioApplication.shared.recordPermission {
-        case .undetermined:
-            AVAudioApplication.requestRecordPermission{ isGranted in
-                self.isPermissionGranted = isGranted
+        if #available(iOS 17.0, *) {
+            switch AVAudioApplication.shared.recordPermission {
+            case .undetermined:
+                AVAudioApplication.requestRecordPermission{ isGranted in
+                    self.isPermissionGranted = isGranted
+                }
+            case .denied:
+                self.isPermissionGranted = false
+            case .granted:
+                self.isPermissionGranted = true
+                break
+            @unknown default:
+                print("Unknown Status")
+                break
             }
-        case .denied:
-            self.isPermissionGranted = false
-        case .granted:
-            self.isPermissionGranted = true
-            break
-        @unknown default:
-            print("Unknown Status")
-            break
+        } else {
+            // Fallback on earlier versions
         }
     }
     

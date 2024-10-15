@@ -73,6 +73,44 @@ class FirebaseStorageHelper{
         }
     }
     
+    //MARK: Audio Helper
+    class func uploadAudio(_ audioFileName: String, directory: String, completion: @escaping (_ audioLink: String?) -> Void){
+        let fileName = audioFileName + ".m4a"
+        
+        let storageRef = Storage.storage().reference(forURL: kStorageReference).child(directory)
+        
+        var task: StorageUploadTask!
+        
+        if fileExistAtPath(fileName){
+            if let audioData = NSData(contentsOfFile: fileDocumentsDirectory(fileName: fileName)){
+                
+                task = storageRef.putData(audioData as Data, metadata: nil, completion: { metadata, error in
+                    task.removeAllObservers()
+                    ProgressHUD.dismiss()
+                    
+                    if error != nil{
+                        print("error uploading Audio \(error!.localizedDescription)")
+                        return
+                    }
+                    
+                    storageRef.downloadURL{ url, error in
+                        guard let url = url else{
+                            completion(nil)
+                            return
+                        }
+                        completion(url.absoluteString)
+                    }
+                })
+                task.observe(StorageTaskStatus.progress){ snapshot in
+                    let progress = snapshot.progress!.completedUnitCount / snapshot.progress!.totalUnitCount
+                    ProgressHUD.progress(CGFloat(progress))
+                }
+            } else {
+                print("No Audio FIle Found")
+            }
+        }
+    }
+    
     //MARK: - Save to local
     
     class func saveFileToLocal(file: NSData, fileName: String){
