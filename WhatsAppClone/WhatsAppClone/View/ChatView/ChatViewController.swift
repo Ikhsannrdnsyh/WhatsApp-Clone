@@ -56,6 +56,10 @@ class ChatViewController: MessagesViewController {
     //MARK: - Listener
     
     var notificationToken: NotificationToken?
+    var longPressGesture: UILongPressGestureRecognizer!
+    var audioFileName = ""
+    var audioDuration = 0
+    var audioDate : Date!
 
    
     //MARK: - Inits
@@ -81,6 +85,7 @@ class ChatViewController: MessagesViewController {
         configureHeaderView()
         configureBackgroundView()
         configureMessageCollectionView()
+        configureGestureRecognizer()
         configureMessageInputBar()
         configureCustomCell()
         //configureImagePicker()
@@ -168,9 +173,7 @@ class ChatViewController: MessagesViewController {
             print("photo")
         }
         
-        micButton.onTouchUpInside { item in
-            print("mic")
-        }
+        micButton.addGestureRecognizer(longPressGesture)
         
         //set button
         
@@ -192,6 +195,12 @@ class ChatViewController: MessagesViewController {
             messageInputBar.setRightStackViewWidthConstant(to: 68, animated: false)
             
         }
+    }
+    
+    private func configureGestureRecognizer(){
+        longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(recordAudio))
+        longPressGesture.minimumPressDuration = 0.5
+        longPressGesture.delaysTouchesBegan = true
     }
     
     private func configureCustomCell(){
@@ -396,6 +405,28 @@ class ChatViewController: MessagesViewController {
         }
         present(picker, animated: true, completion: nil)
         
+    }
+    
+    @objc
+    func recordAudio(){
+        switch longPressGesture.state{
+        case .began:
+            audioDate = Date()
+            audioFileName = Date().stringDate()
+            //start record
+            
+            AudioRecorder.shared
+        case .ended:
+            if fileExistAtPath(audioFileName + ".m4a"){
+                //send audio message
+            }else{
+                print("no file found")
+            }
+            
+            audioFileName = ""
+        default:
+            print("default")
+        }
     }
     
     

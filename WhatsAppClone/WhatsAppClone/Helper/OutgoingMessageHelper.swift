@@ -26,11 +26,12 @@ class OutgoingMessageHelper{
             sendTextMessage(message: message, text: text ?? "", memberIds: memberIds)
         }
         
+        // phoot message type
         if let photo = photo{
             sendPictureMessage(message: message, photo: photo, memberIDs: memberIds)
         }
         
-        FirebaseRecentChatListener.shared.updateRecentChat(chatRoomId: chatId, lastMessage: text ?? "")
+        FirebaseRecentChatListener.shared.updateRecentChat(chatRoomId: chatId, lastMessage: message.message)
     }
     
     class func sendMessage(message: LocalMessage, memberIds: [String]){
