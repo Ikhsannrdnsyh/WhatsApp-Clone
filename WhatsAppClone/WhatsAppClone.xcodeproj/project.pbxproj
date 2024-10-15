@@ -33,6 +33,8 @@
 		01B84D0C2C71E0D100EF28CC /* ContactsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01B84D0B2C71E0D100EF28CC /* ContactsTableViewController.swift */; };
 		01D885F02CBEB1A700D5B277 /* AudioRecorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D885EF2CBEB1A700D5B277 /* AudioRecorder.swift */; };
 		01D885F22CBEC34800D5B277 /* AudioMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D885F12CBEC34800D5B277 /* AudioMessage.swift */; };
+		01D885F42CBEC77900D5B277 /* CustomVoiceChatView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 01D885F32CBEC77900D5B277 /* CustomVoiceChatView.xib */; };
+		01D885F62CBEC80D00D5B277 /* CustomVoiceChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D885F52CBEC80D00D5B277 /* CustomVoiceChatView.swift */; };
 		01DF60E52CABDC6F00B93B63 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01DF60E42CABDC6F00B93B63 /* Extension.swift */; };
 		01DF60E72CABDEE000B93B63 /* StartChatHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01DF60E62CABDEE000B93B63 /* StartChatHelper.swift */; };
 		01DF60E92CABE8B500B93B63 /* FirebaseRecentChatListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01DF60E82CABE8B500B93B63 /* FirebaseRecentChatListener.swift */; };
@@ -88,6 +90,8 @@
 		01B84D0B2C71E0D100EF28CC /* ContactsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsTableViewController.swift; sourceTree = "<group>"; };
 		01D885EF2CBEB1A700D5B277 /* AudioRecorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioRecorder.swift; sourceTree = "<group>"; };
 		01D885F12CBEC34800D5B277 /* AudioMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioMessage.swift; sourceTree = "<group>"; };
+		01D885F32CBEC77900D5B277 /* CustomVoiceChatView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomVoiceChatView.xib; sourceTree = "<group>"; };
+		01D885F52CBEC80D00D5B277 /* CustomVoiceChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomVoiceChatView.swift; sourceTree = "<group>"; };
 		01DF60E42CABDC6F00B93B63 /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		01DF60E62CABDEE000B93B63 /* StartChatHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartChatHelper.swift; sourceTree = "<group>"; };
 		01DF60E82CABE8B500B93B63 /* FirebaseRecentChatListener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseRecentChatListener.swift; sourceTree = "<group>"; };
@@ -276,10 +280,12 @@
 		01DF61092CB7F2AF00B93B63 /* CustomCell */ = {
 			isa = PBXGroup;
 			children = (
+				01D885F32CBEC77900D5B277 /* CustomVoiceChatView.xib */,
 				01AA6E6E2CBE64CA002799A7 /* CustomImageChatView.xib */,
 				01DF61102CB7F45600B93B63 /* CustomTextChatView.xib */,
 				01DF610A2CB7F2CA00B93B63 /* CustomTextChatView.swift */,
 				01AA6E702CBE64FE002799A7 /* CustomImageChatView.swift */,
+				01D885F52CBEC80D00D5B277 /* CustomVoiceChatView.swift */,
 			);
 			path = CustomCell;
 			sourceTree = "<group>";
@@ -366,6 +372,7 @@
 			files = (
 				01AA0C342CA7EDF20097AB6C /* GoogleService-Info.plist in Resources */,
 				01AA0C352CA7F2680097AB6C /* Main.storyboard in Resources */,
+				01D885F42CBEC77900D5B277 /* CustomVoiceChatView.xib in Resources */,
 				018B8DDC2CB80E43007EDE42 /* Assets.xcassets in Resources */,
 				01AA6E6F2CBE64CA002799A7 /* CustomImageChatView.xib in Resources */,
 				01DF61112CB7F45600B93B63 /* CustomTextChatView.xib in Resources */,
@@ -460,6 +467,7 @@
 				01D885F22CBEC34800D5B277 /* AudioMessage.swift in Sources */,
 				016D8BBC2C6B5F41008997E1 /* SettingsTableViewController.swift in Sources */,
 				01AA6E732CBE6C2C002799A7 /* PhotoMessage.swift in Sources */,
+				01D885F62CBEC80D00D5B277 /* CustomVoiceChatView.swift in Sources */,
 				01DF610B2CB7F2CA00B93B63 /* CustomTextChatView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
