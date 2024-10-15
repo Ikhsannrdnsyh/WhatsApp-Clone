@@ -43,6 +43,8 @@ class CustomImageChatView: MessageContentCell {
         
         guard let mkMessage = message as? MKMessage else { return }
         
+        delegate = messagesCollectionView.messageCellDelegate
+        
         switch message.kind {
         case .photo(let photo):
             //set image
@@ -80,6 +82,10 @@ class CustomImageChatView: MessageContentCell {
             }
         }
         return mkMessage.readDate.time()
+    }
+    
+    override func handleTapGesture(_ gesture: UIGestureRecognizer) {
+        delegate?.didTapImage(in: self)
     }
 }
 
