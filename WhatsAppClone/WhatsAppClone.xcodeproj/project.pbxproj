@@ -23,6 +23,8 @@
 		01AA0C342CA7EDF20097AB6C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 01AA0C332CA7EDF20097AB6C /* GoogleService-Info.plist */; };
 		01AA0C352CA7F2680097AB6C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 018BECA42C68D24D00057577 /* Main.storyboard */; };
 		01AA6E6D2CBD64BA002799A7 /* FirebaseTypingListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01AA6E6C2CBD64BA002799A7 /* FirebaseTypingListener.swift */; };
+		01AA6E6F2CBE64CA002799A7 /* CustomImageChatView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 01AA6E6E2CBE64CA002799A7 /* CustomImageChatView.xib */; };
+		01AA6E712CBE64FE002799A7 /* CustomImageChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01AA6E702CBE64FE002799A7 /* CustomImageChatView.swift */; };
 		01B84D012C6B70BD00EF28CC /* EditTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01B84D002C6B70BD00EF28CC /* EditTableViewController.swift */; };
 		01B84D042C71C20100EF28CC /* FirebaseStorageHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01B84D032C71C20100EF28CC /* FirebaseStorageHelper.swift */; };
 		01B84D072C71C96600EF28CC /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01B84D062C71C96600EF28CC /* Util.swift */; };
@@ -73,6 +75,8 @@
 		0190D47B2CB8020400E40152 /* RealmSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = RealmSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		01AA0C332CA7EDF20097AB6C /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		01AA6E6C2CBD64BA002799A7 /* FirebaseTypingListener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseTypingListener.swift; sourceTree = "<group>"; };
+		01AA6E6E2CBE64CA002799A7 /* CustomImageChatView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomImageChatView.xib; sourceTree = "<group>"; };
+		01AA6E702CBE64FE002799A7 /* CustomImageChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomImageChatView.swift; sourceTree = "<group>"; };
 		01B84D002C6B70BD00EF28CC /* EditTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTableViewController.swift; sourceTree = "<group>"; };
 		01B84D032C71C20100EF28CC /* FirebaseStorageHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseStorageHelper.swift; sourceTree = "<group>"; };
 		01B84D062C71C96600EF28CC /* Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
@@ -263,8 +267,10 @@
 		01DF61092CB7F2AF00B93B63 /* CustomCell */ = {
 			isa = PBXGroup;
 			children = (
+				01AA6E6E2CBE64CA002799A7 /* CustomImageChatView.xib */,
 				01DF61102CB7F45600B93B63 /* CustomTextChatView.xib */,
 				01DF610A2CB7F2CA00B93B63 /* CustomTextChatView.swift */,
+				01AA6E702CBE64FE002799A7 /* CustomImageChatView.swift */,
 			);
 			path = CustomCell;
 			sourceTree = "<group>";
@@ -352,6 +358,7 @@
 				01AA0C342CA7EDF20097AB6C /* GoogleService-Info.plist in Resources */,
 				01AA0C352CA7F2680097AB6C /* Main.storyboard in Resources */,
 				018B8DDC2CB80E43007EDE42 /* Assets.xcassets in Resources */,
+				01AA6E6F2CBE64CA002799A7 /* CustomImageChatView.xib in Resources */,
 				01DF61112CB7F45600B93B63 /* CustomTextChatView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -413,6 +420,7 @@
 				01DF60E72CABDEE000B93B63 /* StartChatHelper.swift in Sources */,
 				018BEC9F2C68D24D00057577 /* AppDelegate.swift in Sources */,
 				01DF61042CAE78F400B93B63 /* OutgoingMessageHelper.swift in Sources */,
+				01AA6E712CBE64FE002799A7 /* CustomImageChatView.swift in Sources */,
 				01DF61022CAE664D00B93B63 /* DBManager.swift in Sources */,
 				01DF60FD2CAE583600B93B63 /* MKMessage.swift in Sources */,
 				01DF60F72CAE564300B93B63 /* MessagesLayoutDelegate.swift in Sources */,
