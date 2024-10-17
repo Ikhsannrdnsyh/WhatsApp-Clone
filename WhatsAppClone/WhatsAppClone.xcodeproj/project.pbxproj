@@ -36,6 +36,8 @@
 		01D885F62CBEC80D00D5B277 /* CustomVoiceChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D885F52CBEC80D00D5B277 /* CustomVoiceChatView.swift */; };
 		01D885F82CBECFCF00D5B277 /* BasicAudioController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D885F72CBECFCF00D5B277 /* BasicAudioController.swift */; };
 		01D885FD2CC1492400D5B277 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D885FC2CC1492400D5B277 /* ProfileViewModel.swift */; };
+		01D885FF2CC14EA000D5B277 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D885FE2CC14EA000D5B277 /* ProfileView.swift */; };
+		01D886012CC1510C00D5B277 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D886002CC1510C00D5B277 /* ProfileViewController.swift */; };
 		01DF60E52CABDC6F00B93B63 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01DF60E42CABDC6F00B93B63 /* Extension.swift */; };
 		01DF60E72CABDEE000B93B63 /* StartChatHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01DF60E62CABDEE000B93B63 /* StartChatHelper.swift */; };
 		01DF60E92CABE8B500B93B63 /* FirebaseRecentChatListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01DF60E82CABE8B500B93B63 /* FirebaseRecentChatListener.swift */; };
@@ -94,6 +96,8 @@
 		01D885F52CBEC80D00D5B277 /* CustomVoiceChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomVoiceChatView.swift; sourceTree = "<group>"; };
 		01D885F72CBECFCF00D5B277 /* BasicAudioController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicAudioController.swift; sourceTree = "<group>"; };
 		01D885FC2CC1492400D5B277 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
+		01D885FE2CC14EA000D5B277 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		01D886002CC1510C00D5B277 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		01DF60E42CABDC6F00B93B63 /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		01DF60E62CABDEE000B93B63 /* StartChatHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartChatHelper.swift; sourceTree = "<group>"; };
 		01DF60E82CABE8B500B93B63 /* FirebaseRecentChatListener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseRecentChatListener.swift; sourceTree = "<group>"; };
@@ -254,6 +258,8 @@
 			isa = PBXGroup;
 			children = (
 				01752D4F2C75C9F4006BD3F1 /* ProfileTableViewController.swift */,
+				01D885FE2CC14EA000D5B277 /* ProfileView.swift */,
+				01D886002CC1510C00D5B277 /* ProfileViewController.swift */,
 			);
 			path = ProfileView;
 			sourceTree = "<group>";
@@ -461,6 +467,7 @@
 				01DF60EE2CAE46BB00B93B63 /* ChatViewController.swift in Sources */,
 				01DF60E92CABE8B500B93B63 /* FirebaseRecentChatListener.swift in Sources */,
 				01DF60E72CABDEE000B93B63 /* StartChatHelper.swift in Sources */,
+				01D886012CC1510C00D5B277 /* ProfileViewController.swift in Sources */,
 				01D885FD2CC1492400D5B277 /* ProfileViewModel.swift in Sources */,
 				018BEC9F2C68D24D00057577 /* AppDelegate.swift in Sources */,
 				01DF61042CAE78F400B93B63 /* OutgoingMessageHelper.swift in Sources */,
@@ -468,6 +475,7 @@
 				01DF61022CAE664D00B93B63 /* DBManager.swift in Sources */,
 				01DF60FD2CAE583600B93B63 /* MKMessage.swift in Sources */,
 				01DF60F72CAE564300B93B63 /* MessagesLayoutDelegate.swift in Sources */,
+				01D885FF2CC14EA000D5B277 /* ProfileView.swift in Sources */,
 				01B84D012C6B70BD00EF28CC /* EditTableViewController.swift in Sources */,
 				01B84D0A2C71E02900EF28CC /* ContactsTableViewCell.swift in Sources */,
 				018BECBE2C69FDFA00057577 /* FirebaseUserListener.swift in Sources */,
