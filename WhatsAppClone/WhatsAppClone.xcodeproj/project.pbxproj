@@ -14,7 +14,6 @@
 		018B8DDC2CB80E43007EDE42 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 018BECA72C68D24F00057577 /* Assets.xcassets */; };
 		018BEC9F2C68D24D00057577 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 018BEC9E2C68D24D00057577 /* AppDelegate.swift */; };
 		018BECA12C68D24D00057577 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 018BECA02C68D24D00057577 /* SceneDelegate.swift */; };
-		018BECA32C68D24D00057577 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 018BECA22C68D24D00057577 /* ViewController.swift */; };
 		018BECB32C69E7DB00057577 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 018BECB22C69E7DB00057577 /* LoginViewController.swift */; };
 		018BECB52C69F38500057577 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 018BECB42C69F38500057577 /* User.swift */; };
 		018BECBA2C69F9DD00057577 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 018BECB92C69F9DD00057577 /* Constants.swift */; };
@@ -36,6 +35,7 @@
 		01D885F42CBEC77900D5B277 /* CustomVoiceChatView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 01D885F32CBEC77900D5B277 /* CustomVoiceChatView.xib */; };
 		01D885F62CBEC80D00D5B277 /* CustomVoiceChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D885F52CBEC80D00D5B277 /* CustomVoiceChatView.swift */; };
 		01D885F82CBECFCF00D5B277 /* BasicAudioController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D885F72CBECFCF00D5B277 /* BasicAudioController.swift */; };
+		01D885FD2CC1492400D5B277 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D885FC2CC1492400D5B277 /* ProfileViewModel.swift */; };
 		01DF60E52CABDC6F00B93B63 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01DF60E42CABDC6F00B93B63 /* Extension.swift */; };
 		01DF60E72CABDEE000B93B63 /* StartChatHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01DF60E62CABDEE000B93B63 /* StartChatHelper.swift */; };
 		01DF60E92CABE8B500B93B63 /* FirebaseRecentChatListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01DF60E82CABE8B500B93B63 /* FirebaseRecentChatListener.swift */; };
@@ -66,7 +66,6 @@
 		018BEC9B2C68D24D00057577 /* WhatsAppClone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WhatsAppClone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		018BEC9E2C68D24D00057577 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		018BECA02C68D24D00057577 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		018BECA22C68D24D00057577 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		018BECA52C68D24D00057577 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		018BECA72C68D24F00057577 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		018BECAA2C68D24F00057577 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -94,6 +93,7 @@
 		01D885F32CBEC77900D5B277 /* CustomVoiceChatView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomVoiceChatView.xib; sourceTree = "<group>"; };
 		01D885F52CBEC80D00D5B277 /* CustomVoiceChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomVoiceChatView.swift; sourceTree = "<group>"; };
 		01D885F72CBECFCF00D5B277 /* BasicAudioController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicAudioController.swift; sourceTree = "<group>"; };
+		01D885FC2CC1492400D5B277 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		01DF60E42CABDC6F00B93B63 /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		01DF60E62CABDEE000B93B63 /* StartChatHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartChatHelper.swift; sourceTree = "<group>"; };
 		01DF60E82CABE8B500B93B63 /* FirebaseRecentChatListener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseRecentChatListener.swift; sourceTree = "<group>"; };
@@ -160,11 +160,12 @@
 		018BEC9D2C68D24D00057577 /* WhatsAppClone */ = {
 			isa = PBXGroup;
 			children = (
+				018BECB62C69F4F000057577 /* Model */,
+				01B84CFE2C6B6FD700EF28CC /* View */,
+				01D885FB2CC148C100D5B277 /* ViewModel */,
 				01AA0C332CA7EDF20097AB6C /* GoogleService-Info.plist */,
 				01B84D052C71C95500EF28CC /* Helper */,
 				01B84D022C71C18000EF28CC /* FirebaseHelper */,
-				01B84CFE2C6B6FD700EF28CC /* View */,
-				018BECB62C69F4F000057577 /* Model */,
 				018BEC9E2C68D24D00057577 /* AppDelegate.swift */,
 				018BECA02C68D24D00057577 /* SceneDelegate.swift */,
 				018BECA42C68D24D00057577 /* Main.storyboard */,
@@ -179,13 +180,13 @@
 		018BECB62C69F4F000057577 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				01DF60FE2CAE5A2400B93B63 /* DBModel */,
-				018BECB42C69F38500057577 /* User.swift */,
-				01752D512C75D168006BD3F1 /* RecentChat.swift */,
-				01DF60FA2CAE577900B93B63 /* MKSender.swift */,
-				01DF60FC2CAE583600B93B63 /* MKMessage.swift */,
-				01AA6E722CBE6C2C002799A7 /* PhotoMessage.swift */,
 				01D885F12CBEC34800D5B277 /* AudioMessage.swift */,
+				01DF60FC2CAE583600B93B63 /* MKMessage.swift */,
+				01DF60FA2CAE577900B93B63 /* MKSender.swift */,
+				01AA6E722CBE6C2C002799A7 /* PhotoMessage.swift */,
+				01752D512C75D168006BD3F1 /* RecentChat.swift */,
+				018BECB42C69F38500057577 /* User.swift */,
+				01DF60FE2CAE5A2400B93B63 /* DBModel */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -194,12 +195,11 @@
 			isa = PBXGroup;
 			children = (
 				01DF60EC2CAE469600B93B63 /* ChatView */,
-				013F3E8D2CA2B6DE001E6F96 /* RecentChatsView */,
 				01B84D082C71DFF900EF28CC /* ContactsView */,
+				01D885FA2CC1489100D5B277 /* LoginView */,
+				01D885F92CC1488500D5B277 /* ProfileView */,
+				013F3E8D2CA2B6DE001E6F96 /* RecentChatsView */,
 				01B84CFF2C6B703D00EF28CC /* SettingsView */,
-				018BECA22C68D24D00057577 /* ViewController.swift */,
-				018BECB22C69E7DB00057577 /* LoginViewController.swift */,
-				01752D4F2C75C9F4006BD3F1 /* ProfileTableViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -248,6 +248,30 @@
 				01B84D0B2C71E0D100EF28CC /* ContactsTableViewController.swift */,
 			);
 			path = ContactsView;
+			sourceTree = "<group>";
+		};
+		01D885F92CC1488500D5B277 /* ProfileView */ = {
+			isa = PBXGroup;
+			children = (
+				01752D4F2C75C9F4006BD3F1 /* ProfileTableViewController.swift */,
+			);
+			path = ProfileView;
+			sourceTree = "<group>";
+		};
+		01D885FA2CC1489100D5B277 /* LoginView */ = {
+			isa = PBXGroup;
+			children = (
+				018BECB22C69E7DB00057577 /* LoginViewController.swift */,
+			);
+			path = LoginView;
+			sourceTree = "<group>";
+		};
+		01D885FB2CC148C100D5B277 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				01D885FC2CC1492400D5B277 /* ProfileViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		01DF60EC2CAE469600B93B63 /* ChatView */ = {
@@ -434,10 +458,10 @@
 				018BECB32C69E7DB00057577 /* LoginViewController.swift in Sources */,
 				01D885F82CBECFCF00D5B277 /* BasicAudioController.swift in Sources */,
 				01DF60F92CAE569E00B93B63 /* InputBarAccessoryViewDelegate.swift in Sources */,
-				018BECA32C68D24D00057577 /* ViewController.swift in Sources */,
 				01DF60EE2CAE46BB00B93B63 /* ChatViewController.swift in Sources */,
 				01DF60E92CABE8B500B93B63 /* FirebaseRecentChatListener.swift in Sources */,
 				01DF60E72CABDEE000B93B63 /* StartChatHelper.swift in Sources */,
+				01D885FD2CC1492400D5B277 /* ProfileViewModel.swift in Sources */,
 				018BEC9F2C68D24D00057577 /* AppDelegate.swift in Sources */,
 				01DF61042CAE78F400B93B63 /* OutgoingMessageHelper.swift in Sources */,
 				01AA6E712CBE64FE002799A7 /* CustomImageChatView.swift in Sources */,
@@ -678,6 +702,9 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				HEADER_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = WhatsAppClone/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "$(PRODUCT_NAME) would like to use your camera";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "$(PRODUCT_NAME) would like to use your microphone";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "$(PRODUCT_NAME) would like to use your Library";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -759,6 +786,9 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				HEADER_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = WhatsAppClone/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "$(PRODUCT_NAME) would like to use your camera";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "$(PRODUCT_NAME) would like to use your microphone";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "$(PRODUCT_NAME) would like to use your Library";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
